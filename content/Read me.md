@@ -14,4 +14,4 @@
 </div>
 ```
 
-<div style="direction: rtl; text-align: right;">sad سلام ee </div>
+<div style="direction: rtl; text-align: right;">سلام ee اینطوری نمیشه </div>
