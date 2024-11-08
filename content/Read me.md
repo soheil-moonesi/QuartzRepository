@@ -13,3 +13,5 @@
    این متن test است
 </div>
 ```
+
+<div style="direction: rtl; text-align: right;">sad سلام ee </div>
