@@ -7,3 +7,9 @@
 
 
 ![[{E2B43C36-15EA-4F45-B6C7-BF98FED523C1}.png]]
+
+```
+<div align="right">
+   این متن test است
+</div>
+```
