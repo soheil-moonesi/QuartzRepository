@@ -4,7 +4,9 @@
 
 خوب این قانون 300 کاراکتر هم خیلی جالبه ، خوب در حال حاضر که دارم این پست رو مینوسیم فقط همین مطلب رو میخوام نشون بدم و بعدا دوباره مطالب رو بهش اضافه کنم ولی نمیزاره که مطالب کم پست بشن
 
+
 In C#, if you don't specify an access modifier for a class, it will be given the default access modifier, which is `internal`. This means that the class will be accessible only within the same assembly (a compiled unit of code). It will be private to code outside of that assembly.
+
 
 توی C# وقتی که هیچ دسترسی خاصی رو برای کلاس تعریف نکنیم به صورت default کلاس internal در نظر گرفته میشه .
 
