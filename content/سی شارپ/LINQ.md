@@ -32,7 +32,6 @@ Deferred execution means that the evaluation of an expression is delayed until i
 Deferred execution is applicable on any in-memory collection as well as remote LINQ providers like LINQ-to-SQL, LINQ-to-Entities, LINQ-to-XML, etc.
 
 
-
 ![[Pasted image 20241204144458.png]]![[Pasted image 20241204144509.png]]![[Pasted image 20241204144544.png]]
 
 Language Integrated Query (LINQ) is a powerful feature in .NET that allows for ==querying== data from ==various sources== (like databases, XML documents, and in-memory collections) in a consistent manner using a syntax integrated into the programming language (C# or VB.NET). Below are the advantages and disadvantages of using LINQ:
