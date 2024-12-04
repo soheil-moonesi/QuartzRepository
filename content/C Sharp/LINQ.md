@@ -24,11 +24,13 @@
 ![[Pasted image 20241204144420.png]]خط اول مثل یه foreach عمل میکنه و خط بعدی شرط رو قرار میدیم  و خط سوم هم با select خروجی رو آماده میکنیم 
 ![[Pasted image 20241204144430.png]]![[Pasted image 20241204144434.png]]![[Pasted image 20241204144439.png]]![[Pasted image 20241204144442.png]]
 
+
 # Deferred Execution of LINQ Query
 
 Deferred execution means that the evaluation of an expression is delayed until its realized value is actually required. It greatly improves performance by avoiding unnecessary execution.
 
 Deferred execution is applicable on any in-memory collection as well as remote LINQ providers like LINQ-to-SQL, LINQ-to-Entities, LINQ-to-XML, etc.
+
 
 
 ![[Pasted image 20241204144458.png]]![[Pasted image 20241204144509.png]]![[Pasted image 20241204144544.png]]
