@@ -6,7 +6,7 @@ This article written by "Ahtesham Shaikh", Ahtesham Shaikh is C# and .NETtrainer
 
 خوب حالا میرسیم به موضوع متد های anonymous . خوب حالا به صورت خلاصه متن بالا رو تشریح میکنیم:
 
-خوب این anonymous متد ها باعث بهبود عملکرد delegate ها میشن. باعث میشن که خوانایی کد بره بالا.
+خوب این anonymous متد ها باعث بهبود عملکرد delegate ها میشن و باعث میشن که خوانایی کد بره بالا.
 
 ![[{B039D5F3-A09D-49D0-A8E4-50FD45EE8A3A}.png]]
 
@@ -16,5 +16,7 @@ This article written by "Ahtesham Shaikh", Ahtesham Shaikh is C# and .NETtrainer
 
 ببینید به طور خلاصه بخوایم بگیم دیگه برای این که یه متدی رو سریع و در همون جایی که داریم کد رو مینویسیم بخوایم اجرا کنیم میایم از anonymous متد ها استفاده میکنیم. اینجوری هم سریعتره هم راحت تره هم خوانایی کد میره بالاتر و دیگه نمیخواد برای اجرای یک متد کوچیک بیایم و یه متد جداگانه براش تعریف کنیم.
 
-لینک [مقاله](https://l.vrgl.ir/r?ad=1&l=https%3A%2F%2Fwww.onlinebuff.com%2Farticle_anonymous-methods-in-c-with-an-example-step-by-step_64.html&si=r26b0lttksqs&st=post&k=308BXyfOxl%2FMTRkuPKz9se8nikgTjfHPVKjhZhNIxpo%3D)
+لینک
+https://www.onlinebuff.com/article_anonymous-methods-in-c-with-an-example-step-by-step_64.html
+
 

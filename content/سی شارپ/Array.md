@@ -34,11 +34,14 @@ jaggedArray[0] = new int [4] {1,2,3,4};
 
 ![[{1D5051AE-CD3C-4235-8DFF-205F31EF6491}.png]]
 
+```csharp
 `int[,] arr2d = new int[3,2]{`  
 `{1, 2},`  
 `{3, 4},`  
 `{5, 6}`  
 `};`
+```
+
 
 حالا این یعنی این که ما 3 تا سطر داریم 2 تا ستون : `new int[3,2]`
 
@@ -50,12 +53,15 @@ jaggedArray[0] = new int [4] {1,2,3,4};
 
 ![[{A963D656-C022-48F0-955E-BFF9005ACAC8}.png]]
 
-
+```csharp
 int x[2][3][4] =  
 {  
 { {0,1,2,3}, {4,5,6,7}, {8,9,10,11} },  
 { {12,13,14,15}, {16,17,18,19}, {20,21,22,23} }  
 };
+
+```
+
 
 حالا برای اون دو مورد آخر میتونیم از این عکس استفاده کنیم:
 
@@ -85,10 +91,23 @@ array j = i
 
 راه اول :
 
-![[{5B222E76-E072-45D6-8472-D97A84FB4D9E}.png]]
+```csharp
+Circle[ ] circles={
+circles[0] = new Circle(),
+circle[1]=new Circle()}
+```
+
 
 راه دوم:
-![[{FA2E17CA-D207-4154-BB54-0E3E16960A1B}.png]]
+
+```csharp
+Circle[ ] circles={
+null,
+new Circle(),
+new Circle
+}
+```
+
 
 حالا یه جور دیگه :
 
@@ -158,4 +177,7 @@ Array.Reverse(arr);
 
 با تشکر از استادم آقای عمران صادقی برای تدریس عالی که داشتن.
 
-منابع عکس ها : [سایت](https://l.vrgl.ir/r?ad=1&l=https%3A%2F%2Fwww.geeksforgeeks.org%2Fmultidimensional-arrays-in-c%2F&si=pyhoyoemh4dq&st=post&k=468T1it1hTgmq0t%2FLa8PEZa%2FA6YEijP0Nffln6%2BSORg%3D) و [سایت](https://l.vrgl.ir/r?ad=1&l=https%3A%2F%2Fwww.geeksforgeeks.org%2Fjagged-array-or-array-of-arrays-in-c-with-examples%2F&si=pyhoyoemh4dq&st=post&k=cBMgpWP0fL6b0T2gcxwODLldS0qlbGw9pYlzUn6YVoA%3D)
+منابع عکس ها :
+https://www.geeksforgeeks.org/multidimensional-arrays-in-c/
+
+https://www.geeksforgeeks.org/jagged-array-or-array-of-arrays-in-c-with-examples/

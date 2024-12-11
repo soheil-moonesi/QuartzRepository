@@ -33,7 +33,36 @@ Abstract classes are created using the **abstract keyword**. They provide a com
 
 کلاس های abstract میتونن constructor داشته باشن ولی ما نمیتونیم مستقیما ازشون آبجکت درست کنیم. باید از طریق constructor کلاس هایی که ازش مشتق گرفته شدن برای ساختن آبجکت استفاده کنیم.
 
-![[{8FE73850-F4AC-49D0-9E1B-45908A4BBC58}.png]]
+```csharp
+using System;
+ // Define an abstract class called 'Shape' 
+abstract class Shape { 
+// An abstract method for calculating area, to be implemented by derived classes.
+ public abstract double CalculateArea(); 
+// A non-abstract method with a default implementation.
+ public void DisplayArea() { 
+       Console.WriteLine('Area: ' + CalculateArea()); }
+ } 
+// Create a derived class 'Circle' that inherits from 'Shape'
+ class Circle : Shape {
+ private double radius; 
+// Constructor to initialize the radius 
+public Circle(double r) {  
+      radius = r; }
+ // Implement the abstract method to calculate the area of a circle.
+ public override double CalculateArea() { 
+return Math.PI * radius * radius; } 
+} 
+class Program { 
+static void Main() {
+ // Create an instance of the 'Circle' class
+ Circle circle = new Circle(5.0);
+ // Calculate and display the area of the circle  
+   circle.DisplayArea(); } 
+}
+```
+
+Copy
 
 **Code Explanation:**
 
@@ -76,7 +105,32 @@ Here are the key characteristics of an [interface in C#](https://l.vrgl.ir/r?ad
 
 وقتی که یه کلاس از یه اینترفیس ارث بری میکنه به این معنی هستش که باید به قرارداد هایی که توسط اون اینترفیس تعیین شده باید عمل کنه.
 
-![[{5FEB3707-12E3-4F00-B5CC-25F60E06EEF6}.png]]
+```csharp
+using System;
+ // Define an interface named 'IDrawable'
+ interface IDrawable {
+ void Draw();
+ } 
+// Create a class 'Circle' that implements the 'IDrawable' interface
+ class Circle : IDrawable { 
+ public void Draw() {       
+ Console.WriteLine('Drawing a circle');
+ } 
+} 
+  class Program {
+  static void Main() { 
+  Circle circle = new Circle();     
+  circle.Draw();
+  // Calls the 'Draw' method implemented in the 'Circle' class.
+  IDrawable drawable = circle; 
+ // Polymorphism: Treating 'circle' as an 'IDrawable'.        
+ drawable.Draw();
+ // Still calls the 'Draw' method in the 'Circle' class. 
+} 
+}
+```
+
+
 
 و در اینجا اومدیم اینترفیسی استفاده کردیم به اسم IDrawable که داخلش void Draw رو قرار دادیم و بعد اومدیم و بعد اومدیم به کلاس circle رو از اینترفیس IDrawable ارث بری کردیم، به این معنی که در کلاس circle باید متد Draw پیاده سازی شود.
 
@@ -132,7 +186,52 @@ The Default interface method which is also known as the virtual [extension meth
 
 It allows an Interface to add a method with implementation without breaking the existing functionality
 
-![[{B4575BEA-225F-46B4-BE03-8693992F2501}.png]]
+```csharp
+using System;
+namespace DefaultInterfaceMethodDemo
+{
+// Default Interface Method In C# 8.0
+interface IDefaultInterface
+{
+// This 'ShowMessage' method is having only the declaration part.
+void ShowMessage(string text);
+// Default interface method with both declaration and definition
+//(Implementation).
+//Now Interface members can be public, private, or protected
+public void DefaultInterfaceMethod()
+{
+Console.WriteLine('Default method of interface!');
+}
+}
+// A class that implements
+// the 'IDefaultInterface' interface.
+class MyClass : IDefaultInterface
+{
+// Providing implementation
+// part of the 'ShowMessage' method
+void IDefaultInterface.ShowMessage(string text)
+{
+Console.WriteLine(text);
+}
+}
+class Program
+{
+static void Main()
+{
+IDefaultInterface myClass = new MyClass();
+// Calling default interface method
+myClass.DefaultInterfaceMethod();
+myClass.ShowMessage('Hello World!');
+Console.ReadLine();
+}
+}
+}
+// Output
+// Default method of interface!
+// Hello World!
+```
+
+
 خوب ببینید اینجا یه قابلیت جالبی به اینترفیس ها اضافه شده اینه میتونیم یه متدی رو توی اینترفیس پیاده سازی کنیم ولی این متد لزوما میتونه توی کلاس هایی که دارن استفاده میکنند پیاده سازی نشه و فقط وقتی که میخوایم ازش استفاده کنیم بیایم و call اش کنیم.
 
 خوب اینجا متد defaultInterfaceMethod رو داخل اینترفیس IDefaultInterface پیاده سازی کردیم ولی همونطوری که میبینید توی کلاس MyClass که از این اینترفیس داره استفاده میکنه ولی متد defaultInterfaceMethod داخلش پیاده سازی نشده ، حالا میخوایم از این متد استفاده کنیم ، چی کار کنیم؟
@@ -147,7 +246,28 @@ static void Draw( IShape shape){ }
 
 باز هم نکته : ما میتونیم از اینترفیس ها برای صدا زدن یک متد با تایپ های مختلف استفاده کنیم، مثال:
 
-![[{37C7F825-23BE-4E37-A540-D33233E1FDC6}.png]]
+```csharp
+Circle c = new Circle();
+IShape1 shape1 = c;
+IShape2 shape2 = c;
+
+shape1.Draw();
+shape2.Draw();
+------
+public class Circle :IShape1,IShape2 {
+void IShape1.Draw(){
+Console.WriteLine('shape 1');}
+Void IShape2.Draw(){
+Console.WriteLine('shape 2');}
+}
+Void Draw(){ Console.WriteLine('shape');} }
+------
+public interface IShape1 {
+void Draw();}
+public interface IShape2 {
+ void Draw();}
+```
+
 
 این رو به خاطر داشته باشید که کلاس Circle از هر دو تا اینترفیس داره استفاده میکنه .
 

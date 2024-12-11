@@ -2,8 +2,6 @@
 
 این عکس از این سایت گرفته شده : [لینک](https://l.vrgl.ir/r?ad=1&l=https%3A%2F%2Fraw.githubusercontent.com%2Fgist%2Fmichail-peterlis%2F67ab9f81f16cd2fb074d8ea9c8008653%2Fraw%2F1b41929acf1cab64b4cb386966659e079a9edef5%2Faccess_modifier.svg&si=gfba0fuzkkpq&st=post&k=dUOS%2BY885DOxaEM5A9cIiueuQOV%2BZJVlibC4aqN3Sps%3D) که لایو دمو هم داره و خیلی جالبه حتما یه سر بهش بزنید
 
-خوب این قانون 300 کاراکتر هم خیلی جالبه ، خوب در حال حاضر که دارم این پست رو مینوسیم فقط همین مطلب رو میخوام نشون بدم و بعدا دوباره مطالب رو بهش اضافه کنم ولی نمیزاره که مطالب کم پست بشن
-
 
 In C#, if you don't specify an access modifier for a class, it will be given the default access modifier, which is `internal`. This means that the class will be accessible only within the same assembly (a compiled unit of code). It will be private to code outside of that assembly.
 
