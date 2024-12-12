@@ -309,3 +309,5 @@ DBO = Data base owner
 ![[{C9C4886E-22B6-40EC-B154-0A83B7EA8157}.png]]
 
 ![[{2C34540B-C976-4A01-8EE7-F4803C3B4DAB}.png]]
+
+[[SQL Server]]

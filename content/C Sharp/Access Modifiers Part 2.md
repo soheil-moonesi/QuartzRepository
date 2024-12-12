@@ -23,3 +23,6 @@ In C#, if you don't specify an access modifier for a class, it will be given the
 در نسخه های سی شارپ 7.2 به بعد private protected اضافه شده است.
 
 سطح internal فقط در داخل همون پروژه ای که استفاده شده قابل دسترسی هست(در همون اسمبلی)
+
+[[C Sharp]]
+

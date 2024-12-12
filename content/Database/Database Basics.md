@@ -76,3 +76,4 @@ https://www.tatvasoft.com/blog/how-to-configure-database-mirroring-for-sql-serve
 ![[{13D650E2-43D8-41D1-B5DB-D53E2BB1076F}.png]]
 
 
+[[SQL Server]]
