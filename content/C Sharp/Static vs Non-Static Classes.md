@@ -70,10 +70,3 @@ There are a few key differences between static classes and normal (non-static) c
 
 یه نکته ی جالبی که همیشه یادتون باشه اینه که Console.WriteLine هم دقیقا به صورت static پیاده سازی شده برای همین ما میتونیم اینطوری ازش استفاده کنیم.
 
-```csharp
-Singleton.instance;
-```
-
-```csharp
-Singleton.instance;
-```
