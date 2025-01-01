@@ -110,7 +110,7 @@ Just like a global variable, the Singleton pattern lets you access some object f
 
 استفاده از singleton pattern ها هم شبیه به عملکرد متغییر global هستش ولی اینجا فرق که داره اینه که دیگه اینجا مشکل ایجاد خطا به خاطر overwrite شدن رو نداریم.
 
-این مقاله با توجه به توضحیات و تدریس آقای مهندس سهیل محسنی نوشته شده است و قسمتی از متن هم این [سایت](https://l.vrgl.ir/r?ad=1&l=https%3A%2F%2Frefactoring.guru%2Fdesign-patterns%2Fsingleton%2Fcsharp%2Fexample%23example-0&si=qskl7dvyahg9&st=post&k=vTBM8mGeTYiC%2B8LnqKLnF64mkh37vksrzr1s5Su2N8Y%3D) ترجمه شده است.
+این مقاله با توجه به توضحیات و تدریس آقای مهندس سهیل محسنی نوشته شده است و قسمتی از متن هم این [سایت](https://refactoring.guru/design-patterns/singleton/csharp/example#example-0) ترجمه شده است.
 
 [لینکدین](https://l.vrgl.ir/r?ad=1&l=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fsoheil-mohseni-41b008239&si=qskl7dvyahg9&st=post&k=ekYT2M3WlDY%2B8O%2B3%2F0%2BM0IS5UsXKnwaSRJ0QYvbftlE%3D) سهیل محسنی
 

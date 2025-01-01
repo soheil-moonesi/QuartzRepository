@@ -315,3 +315,104 @@
 ![[{F947D315-928E-4B31-BA38-568186B37646}.png]]
 
 با استفاده از model binding میتونیم تزریق وابستگی رو هم انجام بدیم 
+
+![[Pasted image 20241220165319.png]]
+
+
+تمامی دیتاهایی که از سمت کلاینت به سمت سرور میره با فرمت json ارسال میشه و ما میتونیم این فرمت رو تغییر بدیم :
+
+برای تغییر اول باید پکیج اون فرمت دلخواهمون رو از ناگت بگیریم 
+اینجا از json میخوایم تغییر بدیم به xml 
+ 
+![[Pasted image 20241220165530.png]]
+
+
+میریم در فایل  startup و این کارو میکنیم :
+![[Pasted image 20241220165632.png]]
+
+در کنترلر هم میام از این attribute استفاده میکنیم 
+![[Pasted image 20241220165716.png]]
+
+
+![[Pasted image 20241220165906.png]]
+
+در مواقعی که بخوایم model binder رو به صورت اتختصاصی برای خودمون درست کنیم این کاراها رو میکنه :
+
+  به طور مثال میخوایم با این فرمت دیتا رو دریافت کنیم 
+  ![[Pasted image 20241221174200.png]]
+
+خوب حالا اگر بخوایم این کارو بکنیم باید بیایم یه کلاس جدا درست کنیم و بعد بیایم از اینترفیس IModelBinder ارث بری کنیم 
+![[Pasted image 20241221174419.png]]
+
+برای پارامتر ورودی میاد اون دیتایی که از ورودی میاد رو توی bindingContext میگیره یا از سمت کلاینت براش ارسال میکنیم 
+
+بعد میایم کلاس یوزر رو مینویسیم:
+
+![[Pasted image 20241221211808.png]]
+
+![[Pasted image 20241221214148.png]]
+
+```csharp
+public class UserCustomModelBinder : IModelBinder  
+{  
+    public Task BindModelAsync(ModelBindingContext bindingContext)  
+    
+    {       
+     if (bindingContext == null)  
+        {          
+           throw new ArgumentNullException(nameof(bindingContext));  
+        }       
+        
+		 var values =bindingContext.ValueProvider.GetValue("User");  
+  
+        if (values.Length == 0)  
+        {  
+                  return Task.CompletedTask;  
+        }  
+        var splitData = values.FirstValue.Split('|');  
+        if (splitData.Length >= 3)  
+        {         
+           User user = new User()  
+            {  
+                Id = int.Parse(splitData[0]),  
+                Name = splitData[1],  
+                LastName = splitData[2],  
+ };  
+            bindingContext.Result = ModelBindingResult.Success(user);  
+        }      
+          return Task.CompletedTask;  
+            }  
+}
+```
+
+برای توضیح کد بالا :
+![[Pasted image 20241221212723.png]]
+
+مورد بعدی 
+![[Pasted image 20241221212905.png]]
+
+اینجا ما key رو user در نظر گرفتیم ، این یعنی این که از سمت کلاینت باید با کلید user اون string رو دریافت کنیم :
+![[Pasted image 20241221213010.png]]
+اگر تغییرش بدیم به UserN باید از سمت کلاینت هم با همین کلید ارسالش کنیم 
+
+![[Pasted image 20241221213131.png]]
+![[Pasted image 20241221213142.png]]
+
+مورد بعدی 
+![[Pasted image 20241221213250.png]]
+
+
+```csharp
+public IActionResult NewUser([ModelBinder(binderType:typeof(UserCustomModelBinder))]User newUser)  
+{  
+    return View();  
+}
+```
+
+برای استفاده ازش در controller هم اینطوری ازش استفاده میکنیم 
+
+![[Pasted image 20241221213347.png]]
+
+![[Pasted image 20241221221424.png]]
+
+https://www.dotnetcurry.com/aspnet-mvc/1368/aspnet-core-mvc-custom-model-binding

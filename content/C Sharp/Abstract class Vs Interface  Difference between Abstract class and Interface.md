@@ -1,6 +1,6 @@
 حالا میرسیم به قسمت جالب انگیز ماجرای سی شارپ که میاد مقایسه میکنه abstract class رو با interface
 
-این مقاله از این [سایت](https://l.vrgl.ir/r?ad=1&l=https%3A%2F%2Fwww.shekhali.com%2Finterface-vs-abstract-class%2F&si=jfnebtdxxcp3&st=post&k=YPh2uPvgln8mhnR61UqviibALIo5WeCcBb2xm2UqNNo%3D) گرفته شده.
+این مقاله از این [سایت](https://www.shekhali.com/interface-vs-abstract-class/) گرفته شده.
 
 ![[{B53B4CCF-2FE7-4B60-8D1B-4C634E3B4AD1}.png]]
 
@@ -10,7 +10,7 @@
 
 An abstract class in C# is a class that **cannot be directly instantiated** using the `new` keyword and always acts as a **base class for other classes**.
 
-Abstract classes are created using the **abstract keyword**. They provide a common structure for derived classes to follow. The key characteristics of [abstract classes in C#](https://l.vrgl.ir/r?ad=1&l=https%3A%2F%2Fwww.shekhali.com%2Fcsharp-abstract-class-with-examples%2F&si=jfnebtdxxcp3&st=post&k=aDbFVm70W2seYabTDHmie1JpNNiTYYdl35%2BSZW%2F2f4Y%3D) include:
+Abstract classes are created using the **abstract keyword**. They provide a common structure for derived classes to follow. The key characteristics of [abstract classes in C#](https://www.shekhali.com/csharp-abstract-class-with-examples/) include:
 
 - Abstract classes in C# can **contain abstract methods** without actual code implementation. These methods must be implemented in the derived classes.
 - Abstract classes can also have **non-abstract methods** with actual code. Derived classes can inherit and, if needed, override these methods.
@@ -86,7 +86,7 @@ An interface in C# is a blueprint for defining **a contract that specifies a se
 
 Unlike abstract classes, an **interface contains only method and property signatures but no method implementations**.
 
-Here are the key characteristics of an [interface in C#](https://l.vrgl.ir/r?ad=1&l=https%3A%2F%2Fwww.shekhali.com%2Fcsharp-interface%2F&si=jfnebtdxxcp3&st=post&k=VbQz1XA8p9a9Vybf7o58RmSP3aedGq7E%2FQH%2Bqpgbcwo%3D):
+Here are the key characteristics of an [interface in C#](https://www.shekhali.com/csharp-interface/):
 
 - **Purely Abstract:** Interfaces contain only method signatures, properties, events, or indexers without implementations.
 - **Multiple Inheritance:** A class can implement multiple interfaces, which allows inheriting behaviors from several sources.
@@ -182,7 +182,7 @@ using System;
 
 ### Default Interface Methods Introduced In C# 8.0
 
-The Default interface method which is also known as the virtual [extension method](https://l.vrgl.ir/r?ad=1&l=https%3A%2F%2Fwww.shekhali.com%2Fc-extension-methods%2F&si=jfnebtdxxcp3&st=post&k=Bf11OO3GB%2FKpgtO2SDfZumdsvret3TPZGqfN95nwID0%3D) is a new feature introduced in C# 8.0
+The Default interface method which is also known as the virtual [extension method](https://www.shekhali.com/c-extension-methods/) is a new feature introduced in C# 8.0
 
 It allows an Interface to add a method with implementation without breaking the existing functionality
 

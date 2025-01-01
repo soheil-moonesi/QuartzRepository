@@ -55,7 +55,7 @@ Another advantage of using Single Responsibility Principle is coherence, that is
 
 نگهداری و گسترش پذیری: اگر کلاس هایی که درست میکنیم قوانین SRP رو رعایت نکنه یه کلاس که چندین تا کار رو داره انجام میده داریم، حالا میخوایم به هر دلیلی بیایم داخلش یه چیزی رو تغییر بدیم احتمالا یه اروری بهمون میده که قبلا اتفاق نیوفتاده. اگر یه کلاس فقط یه کار رو انجام بده ما فقط میدونیم که باید برای همون کار بریم و ویرایشش کنیم و وقتی که ویراشش کردیم میریم چک کنیم ببینیم داره درست کار میکنه یا نه، حالا وقتی که اون کلاس داره چند تا کار رو انجام میده و ما میریم یه قسمتی ازش رو تغییر میدیم این تغییر ممکنه روی چند از برنامه تاثیراتی بزاره و ممکنه باعث های ارور های بیشتری بشه و پیدا کردن اون ارور ها هم مشکل تر میشه ولی وقتی که اون کلاس فقط یک رو داره انجام میده تکلیف ما مشخصه.
 
-**Makes testability better:** As any good C# developer we know that writing and running [unit tests](https://l.vrgl.ir/r?ad=1&l=https%3A%2F%2Fwww.bytehide.com%2Fblog%2Funit-testing-csharp&si=ia3eqlp7z0wp&st=post&k=TEw7izuK%2BrAsIZc%2BaDeX7qku%2FyAN4zcNn5DCcp9b8Us%3D) is always advised and considered good practice. By respecting SRP we will find that writing unit tests in the class is an easy task since the class only does one thing and not several and therefore, reduces bux fixes and reduces testing time.
+**Makes testability better:** As any good C# developer we know that writing and running [unit tests](https://www.bytehide.com/blog/unit-testing-csharp) is always advised and considered good practice. By respecting SRP we will find that writing unit tests in the class is an easy task since the class only does one thing and not several and therefore, reduces bux fixes and reduces testing time.
 
 تست نوشتن رو راحت میکنه . خوب همه ما میدونیم که تست نوشتن خوبه. با پیاده سازی SRP ما میتونیم تست های بهتری برای کلاس هایی که داریم بنویسیم و این کار هم راحت تر میشه چون فقط اون کلاسه قراره یک کار رو انجام بده.
 
@@ -81,7 +81,7 @@ The `add` method is, on the one hand, adding a user and on the other hand, it 
 
 ![[{FDF42738-4638-4D5E-B4B3-74D42C158BE0}.png]]
 
-For example, we should separate on one side the [action](https://l.vrgl.ir/r?ad=1&l=https%3A%2F%2Fwww.bytehide.com%2Fblog%2Faction-in-csharp-tutorial&si=ia3eqlp7z0wp&st=post&k=8NzoyODht3jdNXipbENhBGDI2d%2BjwdaBRuEkNuHZE30%3D) of adding a user and on the other side writing in the log.
+For example, we should separate on one side the [action](https://www.bytehide.com/blog/action-in-csharp-tutorial) of adding a user and on the other side writing in the log.
 
 خوب برای مثال باید یه طرف رو میزاشتیم برای اضافه کردن یوزر و یه طرف رو میذاشتیم برای log گرفتن.
 
@@ -152,4 +152,4 @@ Detecting if the Single Responsibility Principle is being violated
 
 با این به نظر غیر منطقی میاد ولی یه موقع هایی میشه از تعداد خط کد هایی که توی یه کلاس هستش حدس بزنیم که داره SRP رعایت میکنه یا خیر. اگر خیلی تعداد خط کد ها زیاد بود احتمالا اون کلاس داره چندین کار رو با هم انجام میده.
 
-لینک مطلب : [لینک](https://l.vrgl.ir/r?ad=1&l=https%3A%2F%2Fwww.bytehide.com%2Fblog%2Fsingle-responsibility-principle-in-csharp-solid-principles&si=ia3eqlp7z0wp&st=post&k=zj%2BtEqGSs17LBFKY%2BEXaIsrsICpkGvhgHeI7zX2Ykvs%3D)
+لینک مطلب : [لینک](https://www.bytehide.com/blog/single-responsibility-principle-in-csharp-solid-principles)
