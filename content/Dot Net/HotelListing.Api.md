@@ -890,3 +890,163 @@ System.MissingMethodException
 
 خوب بعد از این که تغییرات رو انجام مدیم migration رو انجام میدیم 
 ![[{CE37E822-21C9-4D72-BA54-FD9E2BC2A2B9}.png]]
+خوب حالا میرسیم به قسمت تعریف role ها 
+
+![[{3E979743-F272-43F4-BA57-81727B8D8159}.png]]
+در اینجا میخوایم تنظیمات مرتبط با role ها رو تعیین کنیم برای همین یه کلاس به اسم role configuration ساختیم و برای این کار باید از IEntityTypeConfiguration قسمت Identity role ارث بری کنیم 
+
+![[{6AB949E4-8F96-4B88-8D22-04DE6D67562E}.png]]
+
+خوب حالا اینجا میایم این config که تعریف کردیم رو میبریم و به dbcontext اضافه اش میکنیم :
+
+![[{CB9C7D77-2E55-4C75-AEB8-D21CF602D81D}.png]]
+
+نکته راجع به base.OnModelCreating
+![[{915D4549-CA57-41E9-9842-E3B8CC6EF8DE}.png]]
+![[{026500C8-9FD8-436D-BFBF-543B9A6A3AA9}.png]]
+
+![[{7427811D-5CCE-487A-8331-17E9AFD72609}.png]]
+
+برای country هم میتونیم استفاده کنیم :
+
+![[{E48FC636-9651-4090-9D92-D8B26A33CE7D}.png]]
+خوب بعد از این که این کار های رو انجام دادیم میایم و migration رو انجام میدیم و اونجا میبینیم که فقط دو تا role که تعریف کرده بودیم به قسمت up اضافه شده 
+
+![[{BEA9A022-9E8A-4579-9902-886C7CCDB659}.png]]
+
+
+خوب حالا میایم داخل دیتابیس رو نگاه میکنیم 
+
+![[{98CAF870-6236-4625-A81B-6751F8277B3C}.png]]
+
+
+![[{63E1E2D0-5B6D-4445-8488-CEF84BE298C1}.png]]
+نکته به صورت دیفالت چیزی که password validation خوده .net چک میکنه اینه که password باید حداقل یک حرف کوچیک و حداقل یک symbol , حداقل یک عدد و نمیتونه کمتر از 7 تا کارکتر باشه  
+
+![[{B5288544-57F0-4878-B870-EAC24842AEA6}.png]]
+
+خوب حالا  ما میایم این رو به شکل که میخوایم custumize میکنیم 
+
+![[{24BE1C04-7934-4B78-A520-3E707582E08A}.png]]
+خوب اینجا میایم از UserManager در constructor استفاده میکنیم 
+
+![[{6A377125-D511-4A02-85A4-67DD3E44256C}.png]]
+
+  خوب حالا میخوایم وقتی که یه یوزی خواست ثبت نام کنه اگر به مشکل خورد بیایم ارور رو بهش نشون بدیم برای این کار میایم از Identity error استفاده میکنیم :
+  ![[{8C632F60-7E85-4F44-9646-6CB11A170734}.png]]
+   دلیل این که IEnumerable استفاده کردیم به خاطر اینه که ممکنه چند تا ارور داشته باشیم اگر خالی باشه که هیچی
+
+ نکته : وقتی که یک یوزر رو درست میکنیم باید  باید بهش آدرس ایمیل و username بهش اختصاص بدیم و این جز رفتار default identiy core هستش 
+
+خوب حالا اینجا به همین دلیل باید تعیین کنیم که آیا همون ایمیل تبدیل بشه به user name یا   بیایم و user name رو جدا از email تعیین کنیم 
+
+![[{5E53F88C-255C-416E-AF7F-C9F950827583}.png]]
+  خوب حالا اینطوریه که ما اول دیتایی که میخوایم رو با استفاده از ApiUserDto از کلاینت میگیریم و بعد میایم اون دیتایی که گرفتیم رو با استفاده از  auto mapper به Api User تبدیلش میکنیم 
+![[{C0CA4118-AEC2-485E-B2AF-5DF9501A5FD9}.png]]
+که توی api یوزر علاوه بر فیلد هایی که خوده identity user داره ، اومدیم و بهش دو تا فیلد جدید رو هم اضافه کردیم 
+
+بعد طبق قوانینی که بالاتر گفته شده و اینطوری بود که باید به جز ایمیل username رو هم تعریف کنیم اینجا username رو با ایمیل یکی کردیم و در مرحله ی بعد میایم با user manager create async میایم اطلاعات یوزر رو میگیریم و پسوردی که وارد شده رو به صورت hash شده درمیاریم حالا اگر این عملیات موفقت آمیز بود میایم با استفاده از Add to role async اون رو به role که میخوایم اضافه میکنیم که اینجا تعیین کردیم اون role از نوع user باشه 
+
+در مرحله ی بعد چون ما توی Return داریم ارور ها رو برمیگردونیم ، میایم میگیم که اگر اروری اتفاق افتاد بیاد اون رو برگردونه 
+
+![[{29F1DFDF-B162-4580-A2D5-B75FA87F748F}.png]]
+
+![[{A82F9C72-6775-4F03-9792-542E4434921C}.png]]
+
+نکته patch برای update به صورت target ای هستش ولی put کلی آپدیت رو انجام میده و متفاوته 
+
+![[{F900E05E-E34D-411F-9E09-3A894AF6CD10}.png]]
+خوب اینجا تعیین کردیم که میخوایم اطلاعات رو از سمت کلاینت به سرور بفرستیم و میخوایم post رو انجام بدیم و براش یه مسیر تعیین کردیم و بعد با استفاده از attribute سوم تعیین کردیم که ممکنه این عملیات جوابی که میده ممکنه bad request باشه و اینطوری اون کسی که توی فرانت کد میزنه میتونه یه سری اطلاعات از این که چه اتفاقی ممکنه بیوفته رو میفهمه و این رو توی swagger نشون میده 
+
+![[{4CB9FD48-E1FA-4952-9986-73326BDADA56}.png]]
+
+![[{4F69BD5A-8279-4D2E-B73B-9C2E2743C151}.png]]
+
+نکته ی مهم : اینجا وقتی که پروژه رو run میکردم بعد از هر request که میزدم این ارور میومد 
+
+```csharp
+System.ArgumentException: GenericArguments[0], 'System.Char', on 'T MaxFloat[T](System.Collections.Generic.IEnumerable`1[T])' violates the constraint of type 'T'.
+ ---> System.Security.VerificationException: Method System.Linq.Enumerable.MaxFloat: type argument 'System.Char' violates the constraint of type parameter 'T'.
+   at System.RuntimeMethodHandle.GetStubIfNeeded(RuntimeMethodHandleInternal method, RuntimeType declaringType, RuntimeType[] methodInstantiation)
+   at System.Reflection.RuntimeMethodInfo.MakeGenericMethod(Type[] methodInstantiation)
+   --- End of inner exception stack trace ---
+   at System.RuntimeType.ValidateGenericArguments(MemberInfo definition, RuntimeType[] genericArguments, Exception e)
+   at System.Reflection.RuntimeMethodInfo.MakeGenericMethod(Type[] methodInstantiation)
+   at AutoMapper.Internal.TypeDetails.<>c__DisplayClass25_1.<GetPublicNoArgExtensionMethods>b__10(MethodInfo extensionMethod)
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Enumerable.ConcatIterator`1.MoveNext()
+   at System.Linq.Enumerable.SelectManyIterator[TSource,TCollection,TResult](IEnumerable`1 source, Func`2 collectionSelector, Func`3 resultSelector)+MoveNext()
+   at System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   at System.Linq.Enumerable.UnionIterator`1.MoveNext()
+   at System.Linq.Enumerable.ConcatIterator`1.MoveNext()
+   at AutoMapper.Internal.TypeDetails.PossibleNames()
+   at AutoMapper.Internal.TypeDetails.GetMember(String name)
+```
+
+https://support.aspnetzero.com/QA/Questions/11423/Test-upgrade-to-NET-7---Method-SystemLinqEnumerableMaxFloat-type-argument-%27SystemInt64%27-violates-the-constraint-of-type-parameter-%27T%27
+
+با سرچ زدن رسیدم به این سایت که توش نوشته بود علت این ارور به خاطر ورژن 11 auto mapper هستش و در ورژن های بعدی برای .net 7 این قضیه رو درست کردن :
+![[{86EB96C5-EEE7-4B6C-B566-D643CA987D89}.png]]
+
+![[{2E8AF993-F100-4C3A-9F3E-443CF4661535}.png]]
+
+خوب حالا میرسیم به قسمتی که میخوایم login کنیم برای این قضیه میایم یه dto جدا درست میکنیم :
+![[{61A6CF06-F434-46B7-BC1B-470E120650F0}.png]]
+که api user dto از این dto ارث بری میکنه و بعد میایم توی اینترفیس IAuthManager متدی برای log in کردن تعیین میکنیم و بعد میایم در Auth manager پیاده سازییش رو انجام میدیم 
+
+![[{943614C8-E598-479A-9CEB-39DEEC773FA0}.png]]
+![[{C02586E1-2F27-4D22-BF62-E3087BDA6ACA}.png]]
+ ![[{407415EB-F458-4320-BA75-9C094CD58A8E}.png]]
+ 
+ 
+ خوب حالا اگر اتفاقی که بیوفته این باشه که null بیاد توی user  که این باعث exception میشه 
+
+نکته : وقتی که متغییری نشون میده که task<> یعنی این که ما درست منتظر اون object نشدیم یعنی از await استفاده نکردیم 
+
+![[{43361666-E019-44D6-B262-6E32F41E4C38}.png]]
+
+اینطوری درست میشه :
+![[{E591BE50-477A-43E9-B6B9-325504FD4004}.png]]
+
+![[{8B54ABE3-7E44-4BFC-A62A-FEC3A15C8225}.png]]
+![[{FFB09B44-512A-4028-9DB7-213E721AC94F}.png]]
+
+خوب اینجا کاری که کردیم این بوده که اگر null اومد و exception اتفاق افتاد کل api خاموش نمیشه و فقط false رو برمیگردونه 
+
+خوب ما یه پروسه دیگه به اسم sign in کردن رو هم داریم که با کاری که داریم انجا انجام میدیم متفاوته و توی sign in اتفاقی که میوفته اینه که cooke و session و کار های دیگه هم انجام میشه ولی اینجا نه 
+
+ولی api ها sateless هستند 
+
+خوب log in فقط میاد چک میکنه که ببینه که user در سیستم هست یا خیر 
+و یه فرقی که api با یه web app داره که توی Web app یه cookie میتونیم درست کنیم یا یه کارهایی میتونیم بکنیم که ارتباطمون با اون یوزر و کلاینت حفظ بشه  و Session مون حفظ بشه و از طریق اون بفهمیم که کی داره ازش استفاده میکنه 
+ ولی api ها stateless هستند و نمیدونند که چه کسی و چه زمانی قراره ازشون استفاده بشه و به همین دلیل هم هر بار که بخوایم یه درخواستی رو ارسال کنیم باید log in کنیم که میتونیم با راه هایی این رو بهترش کنیم  خوب یه راهش اینه که این دسترسی و ارتباط رو از طریق log in میتونیم بهتر کنیم و مدیریتش کنیم و این کار رو میتونیم از طریق jwt ها انجام بدیم 
+
+
+![[{7BEF7F0B-9393-421E-A33A-D7A716E81ECF}.png]]
+
+![[{CC66CBA1-150D-479A-A324-E94544929919}.png]]
+
+![[{5FFB4D8B-E934-4EB3-90EA-DE02A26B1604}.png]]
+
+اول authentication انجام میشه و بعد authorization انجام میشه 
+
+![[{4BF40F63-4FE6-4D26-A71C-7FA667D82574}.png]]
+![[{DDE84AFA-2F27-480D-BB8C-480848C314C1}.png]]
+
+خوب ما به جای استفاده از magical string اومدیم از jwtBearerDefaults.authenticationScheme استفاده میکنیم  
+
+![[{7089E3E2-DC53-40A2-A8E0-0956D6B20067}.png]]
+
+![[{7BC145A5-B809-466E-890B-0F257D1FF6F4}.png]]
+
+![[{9893C8B4-32D1-45DB-A474-3AC17D5541CB}.png]]
+
+![[{6068D5BD-F468-4CC2-B0AF-6FF04E5EE8B0}.png]]
+
+![[{F89C4B1E-16B4-467C-8425-402628EAC6A8}.png]]
+
+![[{41E1708A-56EE-47D6-8E09-D503D7A6E0BB}.png]]
+برای این که بخوایم امنیت یه داده رو بیشتر کنیم میتونیم توی یه قسمت دیگه به اسم UserSercrets بزاریم :
+روی پروژه کلیک راست میکنیم و بعد میزنیم روی manage user secrets اینجا هم دقیقا شبیه به configuration file هستش ولی به صورت secret 
+
+![[{7415C50F-E1A3-4104-9C99-855E2E860031}.png]]
