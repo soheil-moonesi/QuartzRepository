@@ -1,3 +1,149 @@
 @use "./base.scss";
 
 // put your custom CSS here!
+.content-meta > span {
+  background-color: var(--lightgray);
+  border-radius: 4px;
+  padding: 1px 6px 1px 6px;
+  font-size: 0.9em;
+}
+
+.content-meta {
+  color: var(--darkgray);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+// ریسپانسیو
+@media (max-width: 1510px) {
+  .page > #quartz-body {
+    flex-direction: column-reverse;
+  }
+
+  .page > #quartz-body .sidebar.left {
+    align-items: normal;
+    flex-direction: column;
+  }
+
+  .page > #quartz-body .sidebar.right > * {
+    min-width: fit-content;
+  }
+
+  .page > #quartz-body .sidebar.right {
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+}
+
+// جستجو
+.search {
+  max-width: none;
+}
+
+// دارک مود
+.darkmode {
+  max-width: fit-content;
+}
+
+// فهرست مطالب
+.toc {
+  border-radius: 5px;
+  border: 1px solid var(--lightgray);
+  padding: 12px;
+  font-size: 0.9rem;
+}
+
+#toc-content .depth-0 {
+  list-style: disc;
+  list-style-position: inside;
+}
+
+#toc-content .depth-1 {
+  padding: 0px !important;
+  padding-right: 1rem !important;
+  list-style: circle;
+  list-style-position: inside;
+}
+
+#toc-content .depth-2 {
+  padding: 0px !important;
+  padding-right: 2rem !important;
+}
+
+#toc-content .depth-3 {
+  padding: 0px !important;
+  padding-right: 3rem !important;
+}
+
+#toc-content ul > li > a {
+  margin-right: -12px;
+  opacity: 0.45;
+}
+
+// بک لینک
+.backlinks > ul {
+  border-radius: 5px;
+  border: 1px solid var(--lightgray);
+  list-style: disc;
+  padding-right: 35px;
+  padding-top: 10px;
+  padding-left: 10px;
+  font-size: 0.95rem;
+}
+
+ul.overflow:after,
+ol.overflow:after {
+  display: none;
+}
+
+pre {
+  background: #afafaf1a;
+}
+
+pre > code {
+  overflow-x: auto;
+}
+
+code {
+  direction: ltr !important;
+  font-family: var(--bodyFont);
+}
+
+body {
+  font-size: 1.1em;
+}
+
+p {
+  line-height: 2rem;
+}
+
+li {
+  line-height: 2rem;
+}
+
+sup {
+  vertical-align: middle; //اگه توی متن از پانوشت استفاده شده باشه باعث میشه فاصله بین خطوط به هم نریزه
+}
+
+h2 {
+  font-size: 1.6rem;
+  margin-top: 1rem;
+  margin-bottom: -0.2rem;
+  border-bottom: 1px solid var(--lightgray);
+  padding-bottom: 0.2em;
+}
+
+h3 {
+  font-size: 1.3rem;
+  margin-top: 1rem;
+  margin-bottom: -0.8rem;
+}
+
+h4,
+h5,
+h6 {
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  margin-bottom: -0.8rem;
+}
