@@ -157,7 +157,7 @@ var studentsWithHighScores = from student in students
 ```csharp
 // Using from, select, and where with a different condition
  var femaleNames = from student in students
-                   where student.Gender == &quotFemale&quot 
+                   where student.Gender == "Female" 
                    orderby student.Name ascending 
                    select student.Name;
 ```
@@ -193,4 +193,4 @@ var studentsByClass = from student in students
 
 مرجع این مقاله: [لینک](https://l.vrgl.ir/r?ad=1&l=https%3A%2F%2Fwww.bytehide.com%2Fblog%2Flinq-csharp&si=r4hkfw5ujlwj&st=post&k=B1Fx%2FJHe4FcfoHlwIeXjwdur3My7QkrsJtnRrc9L3so%3D)
 
-
+[[LINQ]]

@@ -62,3 +62,9 @@ var result2 = teams.ToLookup(p => p.County);
 }
 ```
 
+![[Pasted image 20250126110615.png]]
+
+![[Pasted image 20250126110705.png]]
+
+![[Pasted image 20250126110713.png]]
+[[LINQ]]

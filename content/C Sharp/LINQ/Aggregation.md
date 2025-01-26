@@ -73,3 +73,5 @@ Console.WriteLine("____________________Sum__________________");
 
 
 ![[Pasted image 20241204190743.png]]
+
+[[LINQ]]

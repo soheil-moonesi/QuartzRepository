@@ -22,3 +22,5 @@ https://www.sharpencode.com/article/Linq/generation-operator
 
 ![[Pasted image 20241204184917.png]]
 این میاد فقط اون چیزی که بهش میدیم رو ، هر چند باری که بخوایم تکرار میکنه.
+
+[[LINQ]]

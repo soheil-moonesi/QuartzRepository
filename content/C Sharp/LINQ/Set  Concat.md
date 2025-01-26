@@ -121,3 +121,5 @@ Console.WriteLine("______________Union______________");
             var userDistinc = users.Distinct(new userComparer());  
 
 ![[Pasted image 20241204145854.png]]
+
+[[LINQ]]

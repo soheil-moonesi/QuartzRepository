@@ -79,3 +79,5 @@ namespace LinqProject
         public string Name { get; set; }  
     }}
 ```
+
+[[LINQ]]

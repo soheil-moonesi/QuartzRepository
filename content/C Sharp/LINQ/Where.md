@@ -3,3 +3,4 @@
 ![[Pasted image 20241204184203.png]]
 
 int in second overload use for index
+[[LINQ]]

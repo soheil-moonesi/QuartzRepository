@@ -68,3 +68,5 @@ Console.ReadLine();
         public DateTime InsertDate { get; set; }  
     }}
 ```
+
+[[LINQ]]
