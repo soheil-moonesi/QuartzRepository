@@ -113,4 +113,3 @@ public abstract class Shape2 : Shape
 اینجا توی کلاس final دیگه نیازی نیست که side رو مقدار دهی کنیم چون داخل کلاس shape2 بهش مقدار دادیم.
 
 
-[[C Sharp]]

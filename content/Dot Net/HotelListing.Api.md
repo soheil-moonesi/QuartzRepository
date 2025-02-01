@@ -1174,3 +1174,169 @@ https://medium.com/kocsistem/what-is-the-best-approach-for-jwt-refresh-token-682
 ![[{04AAC099-7856-4797-89F2-772B23869EC5}.png]]
 ![[{A5074C41-48E1-44A1-A311-B6BF1A28AB8A}.png]]
 
+ خوب حالا میرسیم به seq دوباره 
+ در قسمت اولی اومدیم گفتیم که توی minimum level بیاد و log بگیره با این تنظیمات و در قسمت دوم گفتیم که به صورت روزانه بیاد لاگ بگیره و محل ذخیره سازیش رو هم بهش دادیم و در مرحله ی سوم اومدیم گفتیم که به این اسم برنامه و به این آدرس سرور باید وصل بشیم 
+ ![[Pasted image 20250127094541.png]]
+ برای seq اینطوریه که وقتی که api رو public کردیم برای همه قابل دسترسی میشه و میخوایم ببنیم که چه کسی داره از api چه درخواستی میکنه و respond اش چیه 
+
+خوب حالا اگر بخوایم یه چیزی رو لاگ بگیریم میایم اینطوری مینویسیم :
+
+![[Pasted image 20250127095853.png]]
+
+اومدیم ILogger رو توی constructor آوردمیش و اضافه اش کردیم نکته ای که هست وقتی که داریم از ILogger استفاده میکنیم اسم اون کلاس که داخلش هستیم رو توی تایپش مینویسیم 
+
+ حالا میخوایم یه لاگ بگیریم زمانی که یه نفر به طور مثال رجیستر کرد 
+![[Pasted image 20250127100523.png]]
+حالا مدل های مختلفی برای نوشتن لاگ داریم 
+
+![[Pasted image 20250127104034.png]]
+خوب در تصویر بالا اومدیم نوشتیم که یوزر با ایمیل میخواد تلاش کنه برای register شدن در ابتدای پروسه و بعد اومدیم از try catch استفاده کردیم برای این که اگر اینجا مشکلی پیش اومد بیایم اون رو در log مون بنویسیم که بتونیم ازش استفاده کنیم 
+
+خوب پروسه رو میبریم داخل try و میایم در مرحله بعدی اگر Exception ای اتفاق افتاد میایم اون رو در لاگ مینویسیم به این شکل که اسم اونجایی که اتفاق افتاده رو هم داریم میاریم با name of و ایمیل رو هم نوشتیم 
+
+![[Pasted image 20250127104753.png]]
+خوب اینجا به جای throw کردن میایم و ارور 500 رو با یک سری اطلاعات دیگه بهش نشون میدیم 
+نکته ای که اینجا هست اینه که ما یک سری پیام خطا رو برای کاربر سایت داریم مینویسیم و یک سری رو داریم برای خودمون تنظیم میکنیم که بتونیم در فرآیند اگر مشکلی پیش اومد بتونیم اون رو شناسایی کنیم 
+
+خوب به صورت منظقی وقتی که داریم لاگ ها رو میگیریم نمیخوایم که  یوزر هر کاری که کرد که normal هستش رو بیایم و ازش لاگ بگیریم ، چیزی که برای ما مهمه اینه که از ارور ها بتونیم لاگ بگیریم 
+
+خوب حالا اینجا از log warning استفاده میکنیم و تعیین کردیم  که اگر اون کشوری که با اون id درخواست داده شده وجود نداشت این رو به صورت warning برامون لاگ بگیره
+![[Pasted image 20250127110256.png]]
+خوب حالا میخوایم راجع به global exception handling صحبت کنیم - بحث اینه که در حالت قبلی اتفاقاتی که داره میوفته و میخوایم ازشون لاگ بگیریم رو دونه دونه باید بریم و براش در جاهای مختلف بنویسیم ولی میخوایم لاگ گرفتن رو از یه راه بهتر امتحانش کنیم :
+
+خوب همونطور که میدونید Exception ها باعث میشن که برنامه بپوکه و ما میخوایم راهی رو پیدا کنیم که نخوایم همه جا بیایم از try catch استفاده کنیم 
+
+ فقط وقتی که Ex اتفاق افتاد اون رو throw کنیم و بعد بیایم به صورت کلی در سیستم این exception ها رو بگیریم و براساس اون ex بیایم یه سری اقدامات رو انجام بدیم 
+
+خوب بیس تمامی Exception ها خوده Exception هستش :
+![[Pasted image 20250127114433.png]]
+
+و بقیه exception ها یه extention از این هستند  
+
+
+نکته ای که هست اینه که ما خودمون هم میتونیم یه EXCEPTION خودمون رو بسازیم 
+
+خوب حالا به طور مثال میخوایم همون کاری که در بالا انجام دادیم رو اینجا به یه شکل دیگه انجام بدیم :
+
+![[Pasted image 20250127120340.png]]
+
+![[Pasted image 20250127115858.png]]
+![[Pasted image 20250127120203.png]]
+![[Pasted image 20250127120212.png]]
+![[Pasted image 20250127120706.png]]
+
+خوب حالا میخوایم بیایم از middleware ها استفاده کنیم ، که برای استفاده از اون ها باید یه سری از کانسپت ها رو بدونیم 
+![[Pasted image 20250127125703.png]]
+
+![[Pasted image 20250127125754.png]]
+![[Pasted image 20250127125807.png]]
+
+![[Pasted image 20250127125822.png]]
+
+![[Pasted image 20250127130301.png]]
+
+![[Pasted image 20250127130343.png]]
+
+https://code-maze.com/working-with-asp-net-core-middleware/
+
+![[Pasted image 20250127131628.png]]
+https://tech-en.netlify.app/articles/en528692/index.html
+
+
+اینجا next اینطوری کار میکنه که وقتی که Request میاد اون رو میگیره و میتونیم روش یه سری کارها رو انجام بدیم و next میشه اون عملیاتی که میخوایم روش انجام بدیم 
+
+خوب اینجا context تمامی اطلاعات مربوط به request رو داره ، مثل پاسخ احتمالی 
+
+```csharp
+using System.Net;
+using System.Text.Json.Serialization;
+using HotelListing.Api.Exceptions;
+using Newtonsoft.Json;
+
+namespace HotelListing.Api.Middleware
+{
+    public class ExceptionMiddleware
+    {
+        private readonly RequestDelegate _next;
+        public ExceptionMiddleware(RequestDelegate next)
+        {
+            this._next = next;
+        }
+
+        public async Task InvokeAsync(HttpContext context)
+        {
+            try
+            {
+                await _next(context);
+            }
+            catch (Exception ex)
+            {
+
+                await HandleExceptionAsync(context, ex);
+            }
+        }
+        private Task HandleExceptionAsync(HttpContext context, Exception ex)
+        {
+            context.Response.ContentType = "application/json";
+            HttpStatusCode statusCode = HttpStatusCode.InternalServerError;
+            var errorDetails = new ErrorDetails
+            {
+                ErrorType = "failure",
+                ErrorMessage = ex.Message,
+            };
+
+            switch (ex)
+            {
+                case NotFoundException notFoundException:
+                    statusCode = HttpStatusCode.NotFound;
+                    errorDetails.ErrorType = "Not Found";
+                    break;
+                default:
+                    break;
+            }
+            string response = JsonConvert.SerializeObject(errorDetails);
+            context.Response.StatusCode =(int) statusCode;
+            return context.Response.WriteAsync(response);
+        } 
+
+    }
+
+    public class ErrorDetails
+    {
+        public string ErrorType { get; set; }
+        public string ErrorMessage { get; set; }
+    }
+
+}
+```
+توضیح کد : از ابتدا از RequestDelegate استفاده کردیم که request هایی که میان رو بگیریم 
+بعد توی try catch گفتیم که اگر همه چی اوکی بود که request رو بفرست برای middleware بعدی و اگر exception اتفاق افتاد اون رو بگیریم و نسبت به تایپ و نوع اون exception بیایم یه کاری کنیم
+
+![[Pasted image 20250127150027.png]]
+خوب توی این حالت وقتی که exception اتفاق افتاد میایم دقیقا اون درخواست و exception ای که اتفاق افتاده رو میفرستیمش توی متد handle Exception Async و اونجا اول میایم بدترین حالت که internal server error هستش رو براش در نظر میگیریم حالا بعدش میایم توی case ها switch که اگر با یکی از case ها یکسان بود میایم و پیامش رو تغییر میدیم و اون رو به جای internal server error ارسال میکنیم 
+
+حالا ما اینجا اومدیم برای error مون کلاس تعریف کردیم و بعد اومدیم ازش استفاده کردیم برای بازگردادن پاسخ ، به این شکل که اگر به طور مثال exception اتفاق افتاده از نوع not found بود و ما اون رو توی case گرفتیمش میایم برای اون درخواست status code اش رو برابر با status code not found قرار میدیم و برای error type هم که در کلاس error detail هستش میگیم که not found هستش بعد میایم جوابمون رو به صورت json درمیاریم ، و بعد برای response به اون درخواست هم میایم status code مربوط به اون ارور رو به کاربر برمیگردونیم 
+
+خوب این نکته رو باید دقت داشته باشیم که ما یک بار همون اول کلاس error detail رو ساختیم و متن پیام ارور رو داخلش قرار دادیم و بعد توی switch اومدیم و نوع status code اش رو تعیین کردیم 
+
+
+
+![[Pasted image 20250127150435.png]]
+![[Pasted image 20250127150447.png]]
+![[Pasted image 20250127152241.png]]
+
+خوب توی مرحله ی بعد میایم اون try catch هایی که نوشتیم رو پاک میکنیم چون دیگه بهشون نیازی نداریم و داریم به صورت globally میایم و error handling رو انجام میدیم 
+
+بعد هم میایم و به program اضافه اش میکنیم :
+![[Pasted image 20250128093025.png]]
+
+اینجا هم میایم و به جا استفاده از logger میایم throw میکنیم ارور رو که بیایم توی  global اون رو بگیریم 
+![[Pasted image 20250128093752.png]]
+
+![[Pasted image 20250128094015.png]]
+
+![[Pasted image 20250128094114.png]]
+![[Pasted image 20250128105735.png]]
+
+![[Pasted image 20250128105753.png]]
+
