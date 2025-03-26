@@ -266,3 +266,5 @@ https://www.programiz.com/sql/group-by
 ![[Pasted image 20250122223752.png]]
 
 ![[Pasted image 20250122224058.png]]
+
+[[SQL Server]]

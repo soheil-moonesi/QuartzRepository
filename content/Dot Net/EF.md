@@ -1053,3 +1053,89 @@ https://virgool.io/@ehsan.tabakhian/eager-loading-%D8%AF%D8%B1-entityframework-c
 خوب توی توضیحات متدش نوشته که هیچوقت از concatinate یا interpolated string ها بدون اینکه این ها چک بشن استفاده نکنیم چون که باعث میشه برنامه تحت خطر sql injection قرار بگیره 
 
 خوب حالا داستانش چیه؟ داستانش اینه که یه نفر میاد به جای ورودی teamName که توی from sql raw نوشتیم میاد و یه sql خودش مینویسه و این رو همراه با همون sql که هستش میفرسته داخل برنامه 
+
+حالا برای این که جلوی این قضیه رو بگیریم میایم و پارامتر sql برای اون تعریف میکنیم به این شکل :
+![[Pasted image 20250313143344.png]]
+
+![[Pasted image 20250313143413.png]]
+
+اون team name که توی استرینگ هستش place holder هستش و فیلد بعدی اون مقداری هستش که داخلش قرار میگیره یعنی اون مقداری که 
+
+این کار باعث میشه که هر چیزی که داستان داشته باشه رو از توی اون فیلد پاک میکنه و یه جورایی دستی داریم  paramitrized اش میکنیم که مانع sql injection بشه 
+
+![[Pasted image 20250313164904.png]]
+خوب اینجا میایم و teamName که در بالاتر به صورت استرینگ نوشتیم رو بهش میدیم 
+![[Pasted image 20250313165026.png]]
+و یه @ هم بهش میدیم و بعد team name param رو بعدش میزاریم
+
+![[Pasted image 20250313165451.png]]
+
+به ارور میخوریم چون که از sql parameter استفاده کردیم در صورتی که دیتابیسمون sqlite  هستش 
+
+![[Pasted image 20250313165553.png]]
+
+![[Pasted image 20250313165724.png]]
+
+خوب همنطوری که معلومه اینجا اومده paramitirized اش کرده 
+
+حالا دقت کنید که ما چند تا آپشن دیگه هم برای پیاده سازی داریم :  from sql , from sql interpolated
+که این دو تا هم به صورت اتوماتیک میان و paramitirized میکنن و دیگه نمیخواد خودمون به صورت دستی بیایم paramitrized کنیم 
+![[Pasted image 20250313165933.png]]
+
+![[Pasted image 20250313170051.png]]
+
+
+![[Pasted image 20250313170627.png]]
+اولی رو خودمون paramitirized کردیم و دوتای بعدی به صورت اتوماتیک انجام شده 
+
+خوب میتونیم از raw sql با linq استفاده کنیم 
+
+![[Pasted image 20250321183238.png]]
+
+اینطوری اول اومدیم teams رو گرفتیم و بعد گفتیم که اونجایی که id ها برابر 1 هستش بیاد دیتاش رو جدا کنه و بر حسب id ّیاد مرتب سازی رو انجام بده و بعد به جای این که بیایم teams رو با league بیایم join بزنیم میایم از include استفاده میکنیم 
+
+به جای استفاده از from sql باید از from sql interpolated استفاده کنیم 
+
+خوب حالا میتونیم از stored Procedure ها هم استفاده کنیم با نوشتن EXEC و بعد نوشتن اون SP و بعد اون پارامتری که میخوایم داخلش بفرسیتم 
+![[Pasted image 20250321184516.png]]
+
+![[Pasted image 20250321184728.png]]
+
+
+خوب میرسیم به Non query statement ها که یعنی همون update , delete , ADD
+
+![[Pasted image 20250321184954.png]]
+
+
+![[Pasted image 20250321190032.png]]
+
+خوب اینجا اومدیم توی یه پارامتر اسم یه تیم جدید رو گذاشتیم و بعد گفتیم که بیاد در جدول Tams و فیلد name بیاد و Update رو انجام بده و sucess که نوشته شده بیانگر اینه که اگر 1 بود عملیاد به درستی انجام شده و اگر 0 بشه به خطا خورده 
+
+![[Pasted image 20250321190549.png]]
+
+خوب با استفاده از این روش میتونیم بیایم دیتاها رو به صورت جزئی از جداولشون بگیریم و دیگه کل entity رو نگیریم ، برای این کار فقط لازمه که بیایم و تایپی که میخوایم رو تعیین کنیم :
+![[Pasted image 20250321191108.png]]
+
+   خوب میرسیم به قسمت اجرای function 
+![[Pasted image 20250321191230.png]]
+
+Create Functions [dbo].[getEaliestMatch] (@teamId int)
+returns datetime
+begin
+declare @result datetime
+select top 1 @result = date 
+from Matches [dbo].[Matches]
+order by date 
+return @result
+end
+خوب برای این که از function بخوایم استفاده کنیم باید بیام و اون رو توی db context تعریف کنیم و بهش map کنیم 
+
+پیگیری برای توضیحات بیشتر 
+
+![[Pasted image 20250321192316.png]]
+
+![[Pasted image 20250321192326.png]]
+
+
+
+92

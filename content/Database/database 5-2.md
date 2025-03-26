@@ -446,3 +446,4 @@ https://www.scaler.com/topics/cartesian-join-sql/
 
 ![[{8AA2400D-4567-4973-85BA-4DBFFAB4661D}.png]]
 
+[[SQL Server]]
