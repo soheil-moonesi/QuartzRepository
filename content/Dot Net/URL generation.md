@@ -1,5 +1,7 @@
 خوب برای این کار میایم از URL  که یه نمونه از اینترفیس IURL هستش استفاده میکنیم 
  با استفاده از Url.Action میایم و url دسترسی به اون action که توی پرانتز نوشتیم رو بهمون میده 
+ #UrlAction
+ #MyDisplayRouteInfo
  
 ![[Pasted image 20241208213710.png]]
 

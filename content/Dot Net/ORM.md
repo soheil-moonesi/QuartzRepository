@@ -18,3 +18,5 @@ An ORM, or **Object Relational Mapper**, is a piece of software designed to tr
 ![[Pasted image 20241211170306.png]]
 
 اینجا داره میگه که یه موقع هایی ef اشتباه میزنه و یه کارهای عیبی انجام میده ولی هر سری ورژن جدیدش میاد بهتر میشه ولی با این حال بازم بهتره که sql رو یاد بگیرم برای کوئری زدن بهتر
+
+#ORM

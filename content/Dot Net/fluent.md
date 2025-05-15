@@ -1,4 +1,6 @@
 
+برای راحتی و خوانا بودن کد ازش استفاده میکنیم 
+#fluent
 ![[Pasted image 20241211165249.png]]
 
 اون دو تا باکس قرمز ها جفشتون دارن یه کار میکنن و دومی مدل fluent هستش که ازش میخوایم استفاده کنیم
@@ -16,6 +18,9 @@
 ![[Pasted image 20241211165322.png]]
 
 چون میتونیم اینطوری ازش استفاده کنیم
+#model_configurations
+#Entity_Configurations 
+#Propery_Configuration
 
 ![[Pasted image 20241211165330.png]]
 
@@ -29,14 +34,14 @@
 
 ممکنه در معماری های مختلف جای این متفاوت باشه 
 لایه دامین و entity باید مستقل از هر چیزی باشند 
-خوب دلیل این که این ها باید از entity جدا باشند اینه که اینجا اگر ما بخوایم entityi هایی که داریم رو به یه دیتا بیس دیگه وصل کنیم ، اگر این config ها کنار خوده entitty باشه ، یعنی بهش وابسته باشه دیگه نمیتونیم به راحتی این کار رو انجام بدیم برای همین entity ها رو همیشه چدا مینویسیم و کانفیگ ها در DAL به صورت جداگانه مینویسیم 
+خوب دلیل این که این ها باید از entity جدا باشند اینه که اینجا اگر ما بخوایم entity هایی که داریم رو به یه دیتا بیس دیگه وصل کنیم، اگر این config ها کنار خوده entity باشه ، یعنی بهش وابسته باشه دیگه نمیتونیم به راحتی این کار رو انجام بدیم برای همین entity ها رو همیشه جدا مینویسیم و کانفیگ ها در DAL به صورت جداگانه مینویسیم 
 
 خوب حالا میایم اینطوری کافیگ ها رو جدا میسازیم 
 
 
 ![[Pasted image 20241211165353.png]]
 
-خوب اینجا این یعنی چی؟ IentityTypeConfiguration توی قسمت بعدیش میایم کانفیگ اون entity که میخوایم درست کنیم رو مینویسیم ، خوب وقتی که بزنیم اتوماتیک متذ هاشو درست کنه بهمون  void configure رو میده که اونجا همونطوری که میبینید اون پارامتر builder از نوع و تایپ entityTypeBuilder هستش که میشه همون شبیه model builder که توی دیتا بیس ازش استفاده کردیم 
+خوب اینجا این یعنی چی؟ IentityTypeConfiguration توی قسمت بعدیش میایم کانفیگ اون entity که میخوایم درست کنیم رو مینویسیم ، خوب وقتی که بزنیم اتوماتیک متد هاشو درست کنه بهمون  void configure رو میده که اونجا همونطوری که میبینید اون پارامتر builder از نوع و تایپ entityTypeBuilder هستش که میشه همون شبیه model builder که توی دیتا بیس ازش استفاده کردیم 
 
 ![[Pasted image 20241211165359.png]]
 
@@ -151,3 +156,103 @@
 
 از ef core 2 به بعد این امکان اضافه شده 
 
+![[Pasted image 20250428170342.png]]
+
+![[Pasted image 20250428170355.png]]
+
+![[Pasted image 20250428170415.png]]
+
+![[Pasted image 20250428170430.png]]
+
+
+![[Pasted image 20250428170449.png]]
+
+
+![[Pasted image 20250428170502.png]]
+
+![[Pasted image 20250428170558.png]]
+
+![[Pasted image 20250428170610.png]]
+
+## Evolution from EF6 to EF Core
+
+1. **More Flexible Organization**:
+    
+    - EF6: Primarily `OnModelCreating` or data annotations
+        
+    - EF Core: Added `IEntityTypeConfiguration<T>` for better separation
+        
+2. **Improved Fluent API**:
+    
+    - More chainable methods for cleaner configuration
+        
+    - Better support for value converters
+        
+3. **Configuration Splitting**:
+    
+    - EF Core allows splitting configuration across multiple files
+        
+    - Can apply configurations from assemblies automatically
+        
+4. **Global Query Filters**:
+    
+    - New in EF Core (model-level configuration)
+        
+
+## Best Practice Recommendations
+
+1. **Use Model Configuration** for:
+    
+    - Cross-entity relationships
+        
+    - Global query filters
+        
+    - Inheritance strategies
+        
+2. **Use Entity Configuration** for:
+    
+    - Table-specific settings
+        
+    - Primary key configuration
+        
+    - Entity-specific indexes
+        
+3. **Use Property Configuration** for:
+    
+    - Column-specific settings
+        
+    - Data type conversions
+        
+    - Validation constraints
+        
+4. **Prefer Fluent API** when:
+    
+    - You need complex configurations
+        
+    - You want to keep entity classes clean
+        
+    - You need conditional logic in configuration
+        
+5. **Use Data Annotations** when:
+    
+    - You have simple requirements
+        
+    - You want configuration visible on the property
+        
+    - You're working with simple validation rules
+
+
+
+![[Pasted image 20250428170845.png]]
+
+![[Pasted image 20250428170858.png]]
+
+
+
+![[Pasted image 20250428170952.png]]
+
+
+
+![[Pasted image 20250428171005.png]]
+
+![[Pasted image 20250428171038.png]]

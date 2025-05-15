@@ -38,6 +38,7 @@
 ![[Pasted image 20241211151733.png]]
 
 خوب یه سری اصطلاحات داریم اینجا :
+#Principal_Entity
 
 ![[Pasted image 20241211151750.png]]
 

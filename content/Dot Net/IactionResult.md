@@ -1,3 +1,20 @@
+
+![[Pasted image 20241207212432.png]]
+
+چه از web api استفاده کنیم یا MVC controller این دوتا هر جفتشون از Controller base ارث بری میکنن و IACTION Result  رو برمیگردونن 
+
+![[Pasted image 20241207212511.png]]
+
+خوب اینجا داره میگه که خیلی دستمون بازه توی middleware ها 
+هم pipeline سمت response و هم request از یه middleware دارن استفاده میکنن
+
+![[Pasted image 20241207212531.png]]
+
+#IActionResult
+#ViewResult
+#jsonResult
+
+
 `IActionResult` is an interface in ASP.NET Core MVC that represents the result of an action method in a controller. When an action method in a controller returns a result, it can return different types of responses, such as rendering a view, redirecting to another action, returning a JSON object, or sending a file. The `IActionResult` interface provides a common way to represent all of these possible outcomes.
 
 ### Common Implementations of `IActionResult`:

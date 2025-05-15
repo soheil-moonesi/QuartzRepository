@@ -9,13 +9,19 @@
 بعدش exception filter که وقتی که یک exception در سیستم ما unhandle باشه اتفاق بیوفته اجرا میشه برا handle کردن و log گرفتن ازش استفاده میشه 
 بعدش result filter هستش که برای تغییر result که میخوایم بفرستیم سمت کاربر 
 
+#Authorization_Filter
+#Resourse_Filters
+#Action_Filters
+#Exception_Filters
+#Result_Filters
 ![[Pasted image 20241221223644.png]]
 
 ![[Pasted image 20241221223657.png]]
-
 
 برای درست کردن authorization filter باید بیایم و از اینترفیس IAuthorizationFilter استفاده کنیم 
 
 ![[Pasted image 20241221224927.png]]
 
  ![[Pasted image 20241221225531.png]]
+
+پیگیری برای توضیحات بیشتر
