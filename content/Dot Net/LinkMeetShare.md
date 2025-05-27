@@ -32,3 +32,6 @@
 ![[Pasted image 20250512214222.png]]
 
 https://www.youtube.com/watch?v=IhA_dE4XF9o&t=288s&ab_channel=NaveenBommidiTechSeeker
+
+
+نکته ای که داره اینه که اگر بخوایم api و front رو به هم وصل کنیم این دو تا موقع compile شدن میرن توی همدیگه و با هم build میشن و این درست نیست برای همین میایم و یک class library رو بینشون میزاریم و بهش refrence میدیم 

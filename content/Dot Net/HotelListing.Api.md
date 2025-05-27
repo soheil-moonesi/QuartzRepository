@@ -1040,14 +1040,83 @@ https://support.aspnetzero.com/QA/Questions/11423/Test-upgrade-to-NET-7---Method
 خوب ما به جای استفاده از magical string اومدیم از jwtBearerDefaults.authenticationScheme استفاده میکنیم  
 
 ![[{7089E3E2-DC53-40A2-A8E0-0956D6B20067}.png]]
+خوب این دو تایی که این بالا توضیح داده defualt authenticated scheme و default challenge schme ، خوب اولی میشه schme که برای user که authenticated هست رو انجام میده و دومی برای زمانی که یکی میخواد دسترسی بدون اجازه و غیر قانونی داشته باشه 
+
+https://learn.microsoft.com/en-us/aspnet/core/security/authentication/?view=aspnetcore-8.0
+
+https://learn.microsoft.com/en-us/aspnet/core/security/authentication/jwt-authn?view=aspnetcore-8.0&tabs=windows
+
+	https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.authentication.jwtbearer.jwtbeareroptions?view=aspnetcore-8.0
+
+
+https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security
+
+![[Pasted image 20250520213431.png]]
+
+Dustin Metzgar - .NET in Action-Manning Publications (2024)
 
 ![[{7BC145A5-B809-466E-890B-0F257D1FF6F4}.png]]
 
-![[{9893C8B4-32D1-45DB-A474-3AC17D5541CB}.png]]
 
+```C#
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ClockSkew = TimeSpan.Zero,
+        ValidIssuer = builder.Configuration["JwtSettings:Issuer"],
+        ValidAudience = builder.Configuration["JwtSettings:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:Key"]))
+    };
+
+```
+
+
+خوب addJwtBearer این متد JWT Bearer Authentication رو به app اضافه میکنه 
+
+خوب tokenValidation paramiter این پارامتر ها رو برای validate کردن  توکن استفاده میکنیم
+
+خوب حالا داخلش از چیا استفاده شده یکیش validate issue user هستش که با این ما مطمئن میشیم که کسی که token با key همخوانی داره 
+
+و validate audience مطمئن میشیم که این token به شخص درستی داده شده 
+و validate life time اینجا مطمئن میشیم که token تاریخ انقضا اش نگذشته باشه 
+و clock skew یه تلورانسی رو برای انقضا داره در نظر میگیره که اگر zero بزنیم یعنی هیچ تلورانسی نداره 
+
+![[Pasted image 20250520224802.png]]
+![[{9893C8B4-32D1-45DB-A474-3AC17D5541CB}.png]]
+خوب تنظیمات valid issuer و audience به این صورته که معمولا valid issuer میشه همون سرومون یا خوده برنامه و valid audence میشه اون client که داره از api استفاده میکنه 
+
+خوب issuer sign key برای sign کردن token استفاده میشه و یک کلید symetric هستش
+خوب برای این که مسائل امنیتی رو رعایت کنیم میتونیم این مقدار key رو بیایم توی configuration file ذخیره کنیم یا enviroment variable 
+
+https://dev.to/eduardstefanescu/jwt-authentication-with-symmetric-encryption-in-asp-net-core-2i53#:~:text=/html/rfc7519.-,Symmetric%20Key,by%20using%20the%20given%20password.
+
+![[Pasted image 20250521202116.png]]
+خوب معنی symetric key اینه که یک secret key هم برای sign و هم برای verify کردن توکن استفاده میشه ، این یعنی این که از یک key برای درست کردن token signuture استفاده میشه و در مرحله بعد هم از همون برای confrim کردن authenticity اش استفاده میشه 
+
+مثل یه رمز shared sectert password میمونه که فقط فرستنده و گیرنده اون رو میدونن 
+
+خوب sigin زمانی که سرور jwt رو میسازه که برای ساختنش میاد از sectert key استفاه میکنه که یه  digital signiture برای token بسازه ، این signutuee برای این هستش که مطمئن بشیم که کسی token رو دستکاری نکرده 
+
+خوب در مرحله بعد که verification هستش وفتی که client میاد jwt رو میگیره با همون secret key میاد بررسی میکنه ، اگر valid باشه که confitm میکنه و معلوم میشه که authntic هستش اگر نه یعنی این که دستکاری شده 
+
+![[Pasted image 20250521202133.png]]
+خوب asymetric key اینطوری که private key به صورت secret و مخفی استفاده میشه و public key هم معلوم و به صورت عمومی استفاده میشه 
+
+
+![[Pasted image 20250521202155.png]]
+
+https://medium.com/@swayamraina/symmetric-vs-asymmetric-jwts-bd5d1a9567f6
 ![[{6068D5BD-F468-4CC2-B0AF-6FF04E5EE8B0}.png]]
+خوب این configuration که داریم اینجا ست میکنیم رو باید بریم توی app setting بریم تنظیماتش رو به صورت json بنویسیم و این که درست نوشتن در اون خیلی داستان داره و کوچکترین اشتباهی باعث ارور میشه و نمیزاره برنامه run بشه 
+
 
 ![[{F89C4B1E-16B4-467C-8425-402628EAC6A8}.png]]
+خوب دلیل این که از encoding utf8 get yte داریم استفاده میکنیم اینه که این تابع میاد کلید رو که به صورت string هستش تبدیل و convert اش میکنه به byte arry که که این فرمت مورد نیاز symetric seecurity key هستش
+
+
 
 ![[{41E1708A-56EE-47D6-8E09-D503D7A6E0BB}.png]]
 برای این که بخوایم امنیت یه داده رو بیشتر کنیم میتونیم توی یه قسمت دیگه به اسم UserSercrets بزاریم :
@@ -1068,9 +1137,21 @@ https://support.aspnetzero.com/QA/Questions/11423/Test-upgrade-to-NET-7---Method
 ![[{0F4C380D-9724-45D6-BA1A-3992100E1021}.png]]
 
 ![[{DCA66656-094A-4C96-80AE-39E0F0F9F977}.png]]
+
+خوب roles اینجا یه collection ای از role هایی که توی برنامه داریم برای هر user هستش ، که هر کدوم از این role ها یه role name داره مثل admin , user و ... 
+
+خوب متدی که توی این خط ازش استفاده شده اومده و از linq استفاده کرده که میاد هر کدوم از المان رو  project  میکنه به یک شکل و form جدید ، که توی این حالت میاد یه سری claim obbject رو برای هر کدوم از role های که توی لیست roles هستند درست میکنه 
+
+برای هر کدوم از role ها که میشه همون x توی لیست roles میاد یه سری claim object درست میکنه 
+خوب claim type role میشه همون تایپ پیش فرض برای role 
+و role name x میفرستیم برای claim ها 
+
+
 ![[{03E5A6BD-EF04-4B96-9ECC-0B85C252CD1B}.png]]
 
-
+خوب این roleclams ها شامل یه لیست از claim ها هستند برای user role ها 
+این claim ها به JWT اضافه میشن وقتی که میخواد generate کنه jwt token رو 
+ازشون توی فرایند های authurization استفاده میشه و برای هر یوزر میاد action هایی رو که میتونه انجام بده رو تعیین میکنه 
 
 ![[{2A17415F-6564-4015-914C-F8EAC4FF1AD9}.png]]
 
@@ -1078,6 +1159,10 @@ https://support.aspnetzero.com/QA/Questions/11423/Test-upgrade-to-NET-7---Method
 
 ![[{9BD034CB-4077-4105-9D10-B16D17E21876}.png]]
 
+https://medium.com/@short_sparrow/how-hmac-works-step-by-step-explanation-with-examples-f4aff5efb40e
+
+
+https://www.geeksforgeeks.org/what-is-hmachash-based-message-authentication-code/
 
 
 ![[{0F5184BE-07DF-4CB2-B865-7D26087625D5}.png]]
