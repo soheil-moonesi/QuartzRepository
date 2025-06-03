@@ -1136,6 +1136,11 @@ https://medium.com/@swayamraina/symmetric-vs-asymmetric-jwts-bd5d1a9567f6
 
 ![[{0F4C380D-9724-45D6-BA1A-3992100E1021}.png]]
 
+خوب توی jwt security token اومدیم تنظیمات برای تولید jwt token رو انجام میدیم و اطلاعات لازم رو داریم بهش میدیم ، اول این که از configuration میره نام و اطلاعات issuer , audience رو میگیره و claims ها رو برابر claim هایی که بالاتر براش نوشتیم قرار میدیم و بعد میگیم که تا چه زمانی اعتبار داره 
+
+در مرحله آخر sign in creadentials رو برابر اون crediencial که در بالاتر درست کردیم با استفاده از security key و الگوریتم هایی که براش در نظر گرفتیم 
+
+با گرفتن تمامی این اطلاعات بعدش به ما token میده 
 ![[{DCA66656-094A-4C96-80AE-39E0F0F9F977}.png]]
 
 خوب roles اینجا یه collection ای از role هایی که توی برنامه داریم برای هر user هستش ، که هر کدوم از این role ها یه role name داره مثل admin , user و ... 
@@ -1155,7 +1160,17 @@ https://medium.com/@swayamraina/symmetric-vs-asymmetric-jwts-bd5d1a9567f6
 
 ![[{2A17415F-6564-4015-914C-F8EAC4FF1AD9}.png]]
 
+توضیحات عکس بالایی در بالاتر نوشته شده است 
+
 ![[{9B98A381-DF1D-4221-9248-6216486675D8}.png]]
+میاد با union تمامی claim هایی که داره رو به هم وصل میکنه 
+
+![[Pasted image 20250531212126.png]]
+
+![[Pasted image 20250531212207.png]]
+
+
+
 
 ![[{9BD034CB-4077-4105-9D10-B16D17E21876}.png]]
 
@@ -1166,7 +1181,13 @@ https://www.geeksforgeeks.org/what-is-hmachash-based-message-authentication-code
 
 
 ![[{0F5184BE-07DF-4CB2-B865-7D26087625D5}.png]]
+خوب اولی که sub هستش : این منظورش عنوان توکن هستش که معمولا email یوزر هستش ، که به صورت خاص و مشخص هست 
 
+دومی jti هستش یا همون jwt id که داره یک uniqe identifer رو برای توکنمون میسازه که معمولا هم guid استفاده میشه 
+
+سومی هم که ایمیل هست
+
+چهارمی uid هستش که شامل User uniqe identifer هستش که کمک میکنه به شناسایی کاربر سیستم
 
 ![[{30EBDC45-3EA2-492D-B3FB-4882EED5CEC3}.png]]
 
@@ -1180,7 +1201,7 @@ https://www.geeksforgeeks.org/what-is-hmachash-based-message-authentication-code
 ![[{E22E3595-01EE-4B3A-BD42-9A0B00E00CDF}.png]]
 
 ![[{16C57530-0AD1-416D-9B79-982415308B77}.png]]
-
+خوب توی login داریم از generate token استفاده میکنیم 
 ![[{13AD4C8B-1A02-42F5-95E1-1ECDF8FDABFD}.png]]
 
 ![[{660A85D0-D50F-44D5-9ACC-DB494166D3D2}.png]]
@@ -1252,7 +1273,14 @@ https://www.geeksforgeeks.org/what-is-hmachash-based-message-authentication-code
 
 
 ![[{6E7CA67B-834A-4B3B-8D53-0DFE0A29DF97}.png]]
+خوب اولش داره میگه که identity servis رو داره برای api user فعال میکنه 
+بعدش میاد قابلیت تنظیمات و مدیریت role ها رو به سیستم idenetity اضافه میکنه که با استفاده ازش میتونیم role بسازیم و به user ها مون اون role ها رو بدیم 
+
 ![[{51E4EFAB-0568-411B-B586-1587712742E3}.png]]
+
+خوب add token provider میاد token provider رو به api user اضافه میکنه و data protector token provider رو میاد برای تولید و validate کردن token ها استفاده میکنه و اون string اخر هم میشه اسم اون token provider 
+
+خوب add entity famework stores میاد identity رو configure میکنه برای استفاده از entity frame work برای این که دیتا ها که داره میگه رو با استفاده از اون توی دیتابیس ذخیره کنه مثل اطلاعات یوزر ها , token , role ها و ... 
 
 ![[{3AF64D59-577D-479C-87CD-235BBD578339}.png]]
 
@@ -1279,6 +1307,9 @@ https://medium.com/kocsistem/what-is-the-best-approach-for-jwt-refresh-token-682
 حالا مدل های مختلفی برای نوشتن لاگ داریم 
 
 ![[Pasted image 20250127104034.png]]
+
+
+
 خوب در تصویر بالا اومدیم نوشتیم که یوزر با ایمیل میخواد تلاش کنه برای register شدن در ابتدای پروسه و بعد اومدیم از try catch استفاده کردیم برای این که اگر اینجا مشکلی پیش اومد بیایم اون رو در log مون بنویسیم که بتونیم ازش استفاده کنیم 
 
 خوب پروسه رو میبریم داخل try و میایم در مرحله بعدی اگر Exception ای اتفاق افتاد میایم اون رو در لاگ مینویسیم به این شکل که اسم اونجایی که اتفاق افتاده رو هم داریم میاریم با name of و ایمیل رو هم نوشتیم 
@@ -1428,4 +1459,71 @@ namespace HotelListing.Api.Middleware
 ![[Pasted image 20250128105735.png]]
 
 ![[Pasted image 20250128105753.png]]
+
+خوب یک بخش مهم در بالا جا مونده بود که اینجا میخوام بنویسم :
+
+![[Pasted image 20250531181650.png]]
+بخش مهم register اینطوری داره کار میکنه که توی ورودی میاد api user dto رو میگیره که خوده این user dto داستان داره 
+
+![[Pasted image 20250531181830.png]]
+خوده api user dto از یک dto دیگه داره ارث بری میکنه 
+
+![[Pasted image 20250531182509.png]]
+
+خوب هدف از این که اومدیم از این دو تا dto استفاده کردیم اینه که تعداد dto کمتری بنویسیم و این که کلا هدف استفاده از dto اینه که بتونیم فقط اطلاعاتی که میخوایم از client بگیریم رو بگیریم 
+
+خوب بعدش اومدیم با استفاده از auto mapper اومدیم user dto که توی ورودی register داریم میگیریم و بعد میایم اون رو با mapper به api user وصل میکنیم 
+
+چرا؟ چون که ما تعیین کردیم که برای دسترسی و احراز هویت کاربران از کلاس api user استفاده کنیم به همین منظور اومدیم اون رو از identity user ارث بری کردیم 
+
+![[Pasted image 20250531185034.png]]
+
+خوب حالا اتفاقی که میوفته اینه که اطلاعاتی که با استفاده از dto ها از کلاینت میگیریم رو میایم به api user وصل میکنیم و انتقال میدیم که اون بیاد به صورت اتوماتیک این اطلاعات رو در دیتابیس قرار بده و پسور رو hash کنه و بقیه کارهاش رو انجام بده 
+
+فقط نکته ی خیلی مهمی که هست اینه که 
+
+![[Pasted image 20250531185729.png]]
+
+ما توی هیچ کدوم از کلاس ها و dto هایی که گفته شده چیزی به اسم user name نداریم ، ولی اینجا اومدیم گفتیم که user name برابر email باشه ، چطور ؟
+
+اینطور که این user name توی کلاس identity user هستش که برای خوده .net هستش و باید بهش مقدار بدیم 
+
+![[Pasted image 20250531190044.png]]
+
+اینجا هم نوشته شده 
+
+خوب حالا اگر نخوایم از mapper استفاده کنیم باید به این شکل عمل کنیم :
+
+
+![[Pasted image 20250531190140.png]]
+
+نتیجه میشه این که وقتی که این اطلاعات رو میزنیم :
+![[Pasted image 20250531190814.png]]
+
+
+به صورت اتوماتیک میره در دیتابیس این رکورد ها رو ایجاد میکنه:
+
+![[Pasted image 20250531190933.png]]
+
+![[Pasted image 20250531190951.png]]
+
+error
+
+```
+"```
+System.ArgumentOutOfRangeException: IDX10653: The encryption algorithm 'HS256' requires a key size of at least '128' bits. Key '[PII of type 'Microsoft.IdentityModel.Tokens.SymmetricSecurityKey' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]', is of size: '88'. (Parameter 'key')
+```"
+```
+
+https://stackoverflow.com/questions/47279947/idx10603-the-algorithm-hs256-requires-the-securitykey-keysize-to-be-greater
+
+![[Pasted image 20250531201909.png]]
+
+برای پیاده سازی blazor 
+https://www.youtube.com/watch?v=oqpNQxEfz_Y&ab_channel=CodeOverdose
+
+
+خوب یه سری قسمت دیگه هم مونده که اینجا مینویسم :
+
+![[Pasted image 20250601105610.png]]
 

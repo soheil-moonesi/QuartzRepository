@@ -35,3 +35,34 @@ https://www.youtube.com/watch?v=IhA_dE4XF9o&t=288s&ab_channel=NaveenBommidiTechS
 
 
 نکته ای که داره اینه که اگر بخوایم api و front رو به هم وصل کنیم این دو تا موقع compile شدن میرن توی همدیگه و با هم build میشن و این درست نیست برای همین میایم و یک class library رو بینشون میزاریم و بهش refrence میدیم 
+
+error
+``` c#
+Unable to create a 'DbContext' of type ''. The exception 'The entity type 'IdentityUserLogin<string>' requires a primary key to be defined. If you intended to use a keyless entity type, call 'HasNoKey' in 'OnModelCreating'. For more information on keyless entity types, see https://go.microsoft.com/fwlink/?linkid=2141943.' was thrown while attempting to create an instance. For the different patterns supported at design time, see https://go.microsoft.com/fwlink/?linkid=851728
+```
+
+![[Pasted image 20250529135428.png]]
+
+![[Pasted image 20250529135341.png]]
+وقتی که بعد از تنظیم کردن jwt میخوایم migration بزنیم این ارور میومد ، بعدش که درستش کردیم migration انجام شد 
+
+دقت کنیم که بعد از این عملیات هستش که یه سری جدول رو میاد توی دیتابیس برای identity درست میکنه 
+
+![[Pasted image 20250529135613.png]]
+
+![[Pasted image 20250529135631.png]]
+
+
+![[Pasted image 20250529135644.png]]
+
+
+
+![[Pasted image 20250529135716.png]]
+
+![[Pasted image 20250529135732.png]]
+
+![[Pasted image 20250529135748.png]]
+
+
+![[Pasted image 20250529135801.png]]
+
