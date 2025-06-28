@@ -1,6 +1,7 @@
 استفاده از litebus برای پروژه 
 از marvin جای mediateR استفاده کنیم 
 از Mapperly به جای auto mapper
+پکیج brighter هم خیلی خوبه 
 
 ![[Pasted image 20250422145909.png]]
 

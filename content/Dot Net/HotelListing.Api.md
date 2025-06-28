@@ -1238,7 +1238,7 @@ https://www.geeksforgeeks.org/what-is-hmachash-based-message-authentication-code
 خوب برای این که یک یوزر رو به شکل admin دربیاریم میایم از role id اون id که نمایانگر Adminstrator هستش رو کپی میکنیم و بعد میایم user id رو کپی میکنیم و بعد اون Role id رو بهش میدیم اینطوری admin هم به user دسترسی داره و هم به admin 
 
 ![[{0B917B7F-1420-4D23-8DF7-AD5D96EEFB04}.png]]
-
+توضیحات refresh توکن پایین تر نوشته شده 
 
 ![[{A4D9F80B-4126-4B96-B3C0-B0B4F7E4E295}.png]]
 
@@ -1254,19 +1254,72 @@ https://www.geeksforgeeks.org/what-is-hmachash-based-message-authentication-code
 ![[{A2C4788B-F680-4F27-8E40-58E7A4D966E3}.png]]
 
 ![[{3619B7FB-307C-4352-81B6-8AE4CE3D78F2}.png]]
+
+![[Pasted image 20250603184814.png]]
+
+
+![[Pasted image 20250603184934.png]]
+
+
+![[Pasted image 20250603185018.png]]
+
+
+![[Pasted image 20250603185157.png]]
+
+
+![[Pasted image 20250603185559.png]]
+
+
+
+خوب توی response هم token تغییر کرده و هم refresh token که هر دو جدید هستند 
+![[Pasted image 20250603190143.png]]
+
+خوب یک مرحله قبل از این که این refresh token ایجاد بشه ، باید قبلش بیایم و چکش کنیم 
+
 ![[{006311EF-B30C-4F0F-9ADD-CD7192372639}.png]]
 
 ![[{B717825D-90EF-4966-B20E-9D3970CCCA4D}.png]]
+
 ![[{DDB20952-6F67-4B4A-B267-4EF6F052EE91}.png]]
+
+
+خوب حالا برای چک کردن میایم اول از jwt security token handler یه instance میسازیم که ازش استفاده کنیم ، بعد با استفاده از read jwt token میایم توکن رو میخونیم 
+
+خوب اطلاعات داخل token content به این شکل هستش : 
+
+![[Pasted image 20250603193537.png]]
+
+![[Pasted image 20250603193653.png]]
+
+
+![[Pasted image 20250603193613.png]]
 
 ![[{FA49E4A8-F486-49CB-91E4-BC16C22B3E03}.png]]
 
+توی jwt registerd clam names دقیقا اومده اسم های claim ها رو نوشته که ما میزنیم که email
+![[Pasted image 20250603194305.png]]
+
+
+بعدش با token claims to list میایم از داخل اون توکن claim ، ایمیل رو برمیداریم بعد میریم اولین claim با تایپ jwt registed claim names email رو select میکنیم اون ? value رو برای این گذاشتیم که اگر چیزی پیدا نکرد null بیاد و user name رو null بزاره 
+
+
 ![[{886E194F-6D2A-47B4-B859-100289294BD9}.png]]
 
+خوب بعدش میایم refresh token رو با استفاده از verify user token async که توی user manager هست ، میایم چکش میکنیم ، این متد میاد user , login provider , token name , refresh token رو از req میگیره و یه خروجی bool میده مبنی بر این که این توکن valid هستش یا خیر 
 ![[{30440FD9-BC42-4BB1-A4CD-60C18484FEAC}.png]]
 
+خوب در مرحله ی بعد چک میکینم اگر refresh token valid بود میایم و یه توکن تازه میسازیم با استفاده از generate token و در مرحله ی بعد میایم با استفاده از dto هم توکن رو برمیگردونم سمت کاربر به همراه user id و refresh token که البته refresh token رو همونجا میسازیم با create refresh token
+
+ 
 ![[{D4A491A9-73F8-47D2-9F82-7E2C03C147F5}.png]]
 
+خوب اگر اون if بالایی درست نبود میایم user security stamp رو آپدیت میکنیم با استفاده از updatate security stamp async که یکی از متد های user manager هستش ، این کار باعث میشه که هر توکنی که از قبل درست شده باطل بشه 
+
+![[Pasted image 20250603195850.png]]
+
+بعد از این که در refresh token اومدیم و دستکاری رو انجام دادیم به این صورت security stamp , concuency stamp عوض میشن 
+
+![[Pasted image 20250603211746.png]]
 
 
 ![[{EE6A4E84-9867-414D-902B-591EA2364321}.png]]
@@ -1526,4 +1579,21 @@ https://www.youtube.com/watch?v=oqpNQxEfz_Y&ab_channel=CodeOverdose
 خوب یه سری قسمت دیگه هم مونده که اینجا مینویسم :
 
 ![[Pasted image 20250601105610.png]]
+
+![[Pasted image 20250603181343.png]]
+
+خوب توی ورودی login provider داریم و refreshtoken که هر دو تا رو به صورت string اومدیم مقدار دهی کردیم و ازشون استفاده کردیم 
+
+خوب مرحله ی اول برای درست کردن refresh token اینه که اون توکنی که الان موجود هست برای یوزر رو پاکش کنیم برای همین از remove authentication token async استفاده کردیم 
+
+![[Pasted image 20250603181552.png]]
+
+مرحله بعدش میایم refresh token رو درست میکنیم :
+
+![[Pasted image 20250603181851.png]]
+با generate user token async میایم این کار رو انجام میدیم 
+
+بعد میایم توکن جدیدی که درست شده رو به user میدیم و assign میکنیم :
+
+![[Pasted image 20250603182003.png]]
 
