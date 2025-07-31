@@ -6,16 +6,27 @@ dotnet new
 
 ![[Pasted image 20250517174509.png]]
 
+دستور اینطوری میزنیم
+C:\Users\Soheil\Desktop\blazorPrj> dotnet new web -o App1
 
 برای اجرای پروژه میایم با cd میریم داخل فولدرش و با دستور code . اون رو اجرا میکنیم 
 
 ![[Pasted image 20250517174925.png]]
 
-اولش میایم برای اجزایی شدن کد هامون build اش میکنیم 
+اولش میایم برای اجزایی شدن کد هامون build اش میکنیم   
 ![[Pasted image 20250517175033.png]]
 
 بعد میایم میزنیم dotnet run
 ![[Pasted image 20250517175204.png]]
+
+برای این که ارور 
+
+The type or namespace name 'AspNetCore' does not exist in the namespace 'Microsoft' (are you missing an assembly reference?)
+
+برای رفع ارور:
+- dotnet add package Microsoft.AspNetCore
+
+
 
 
 ![[Pasted image 20250517180641.png]]
@@ -39,13 +50,16 @@ dotnet new
 
 به ارور میخوریم
 ![[Pasted image 20250517181734.png]]
-
+	
 اکشتنشن های خوب
 
 ![[Pasted image 20250517181940.png]]
 
 
 ![[Pasted image 20250517182025.png]]
+
+
+code --install-extension SonarSource.sonarlint-vscode
 
 
 اینجا حالا میایم explicit usig میکنیم :
