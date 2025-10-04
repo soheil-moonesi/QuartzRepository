@@ -321,3 +321,53 @@ namespace Final_SophieTravelManagment.Domain.ValueObjects
 خوب حالا برای این که کار قشنگ تر بشه به جای این که همینطوری بیایم و یه exception رو بفرسیتم بالا میایم یه فولدر میسازیم به اسم exception 
 
 30
+
+![[Pasted image 20251004110745.png]]
+
+![[Pasted image 20251004110922.png]]
+این جا میاد message رو به کلاس parent پاس میده 
+how to handle parent paramiter in child class in Csharp 
+
+خوب حالا ما هر جایی توی سیستم که ex داشته باشیم اون میاد از این کلاسه که ساختیم استفاده میکنه 
+
+![[Pasted image 20251004111315.png]]
+
+خوب حالا میخوایم بیایم توی domian و ex های که اونجا اتفاق میوفته رو بنویسیم 
+
+![[Pasted image 20251004111427.png]]
+
+این میاد فقط ex هایی که مرتبط با id هستش رو پیدا میکنه 
+![[Pasted image 20251004111558.png]]
+
+![[Pasted image 20251004111631.png]]
+
+میرسیم به value object ها 
+
+![[Pasted image 20251004111939.png]]
+
+![[Pasted image 20251004112034.png]]
+
+![[Pasted image 20251004112053.png]]
+
+![[Pasted image 20251004112132.png]]
+
+![[Pasted image 20251004112454.png]]
+![[Pasted image 20251004112705.png]]
+
+
+![[Pasted image 20251004112817.png]]
+
+![[Pasted image 20251004113040.png]]
+
+![[Pasted image 20251004113117.png]]
+
+
+خوب این رو اضافه میکنیم :
+
+![[Pasted image 20251004122820.png]]
+
+
+![[Pasted image 20251004122958.png]]
+
+![[Pasted image 20251004123019.png]]
+تا دقیقه 46
