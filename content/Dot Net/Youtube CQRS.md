@@ -220,87 +220,46 @@ namespace LearnImplicitOperators
 
 ```C#
 using System;
-
 using System.Collections.Generic;
-
 namespace Final_SophieTravelManagment.Domain.ValueObjects
-
 {
-
     public record TravelerCheckListId
-
     {  
-
         public Guid Value { get; }
-
         public TravelerCheckListId(Guid value)
-
         {
-
             if (value == Guid.Empty)
-
             {
-
                 throw new ArgumentNullException();
- 
-
             }
-
-
             Value = value;
-
         }
-
-        public static implicit operator TravelerCheckListId(Guid id) => new(id);
-
+       public static implicit operator TravelerCheckListId(Guid id) => new(id);
+       
         public static implicit operator Guid(TravelerCheckListId id) => id.Value;
-
-
     }
 
 
     class Program
-
     {
-
         static void Main(string[] args)
-
         {
-
-  
-
             // TravelerCheckListId Test = new(Guid.NewGuid());
-
-  
-
             TravelerCheckListId Test = Guid.NewGuid();
 
-  
-
             Guid MyGuid = Test;
-
-  
-
             Console.WriteLine(Test.Value);
-
-  
-
             //Guid GuidValue = Guid.Parse(Test.Value.ToString());
 
-  
-  
-  
 
         }
-
     }
-
 }
 ```
 
-
+خوب این چیزی که این پایین نوشته شده برای اینه که نشون بده کامپایلر چی کار میکنه 
 ![[Pasted image 20251003111124.png]]
-
+بعدش هم گفته اون تابع هایی که اون بالا ازشون استفاده شدنن اینها هستن 
 ![[Pasted image 20251003111241.png]]
 
 ![[Pasted image 20251003111301.png]]
@@ -312,6 +271,7 @@ namespace Final_SophieTravelManagment.Domain.ValueObjects
 ![[Pasted image 20251003094808.png]]
 
 این قسمت بالا رو بعدا باید جدا کنم ببرم توی قسمت csharp چون که بیسیک هستش 
+خوب توی مثال بالا میتونیم string بگیریم و تبدیلش کنیم به person ولی دیگه age از بین میره و توی حالت بعدیش هم میتونیم person رو بگیریم و ازش اسمش رو دربیاریم ولی دیتا age اش از بین میره 
 
 ![[Pasted image 20251003111908.png]]
 
@@ -362,6 +322,52 @@ how to handle parent paramiter in child class in Csharp
 ![[Pasted image 20251004113117.png]]
 
 
+![[Pasted image 20251004163225.png]]
+
+![[Pasted image 20251004163238.png]]
+
+![[Pasted image 20251004163300.png]]
+
+![[Pasted image 20251004163315.png]]
+
+![[Pasted image 20251004163334.png]]
+
+![[Pasted image 20251004163511.png]]
+
+![[Pasted image 20251004163526.png]]
+
+![[Pasted image 20251004163536.png]]
+
+![[Pasted image 20251004163549.png]]
+
+![[Pasted image 20251004163624.png]]
+
+![[Pasted image 20251004163635.png]]
+![[Pasted image 20251004163651.png]]
+
+![[Pasted image 20251004163720.png]]
+
+![[Pasted image 20251004163734.png]]
+
+![[Pasted image 20251004163744.png]]
+
+![[Pasted image 20251004163807.png]]
+
+![[Pasted image 20251004163818.png]]
+
+![[Pasted image 20251004163851.png]]
+
+![[Pasted image 20251004163901.png]]
+
+![[Pasted image 20251004163923.png]]
+
+![[Pasted image 20251004163941.png]]
+
+![[Pasted image 20251004163950.png]]
+
+![[Pasted image 20251004164000.png]]
+
+
 خوب این رو اضافه میکنیم :
 
 ![[Pasted image 20251004122820.png]]
@@ -371,3 +377,21 @@ how to handle parent paramiter in child class in Csharp
 
 ![[Pasted image 20251004123019.png]]
 تا دقیقه 46
+
+باید از ابتدا با rider پیاده سازیش رو انجام بدم 
+
+ولی برای این قسمت آخر میخوام توضیحاتی که از deepseek گرفتم رو بنویسم که بعدا ازش استفاده کنم :
+
+![[Pasted image 20251004153642.png]]
+
+![[Pasted image 20251004153713.png]]
+خوب حالا داستان این this چیه ، این this میاد اول با اون پارامتر های اولیه که id , name m destantion هستند میاد constructor اصلی و اولیه رو صدا میزنه و باهاش object رو میسازه اگر هم item داشته باشه میاد اون item رو هم قرار میده 
+![[Pasted image 20251004153857.png]]
+![[Pasted image 20251004154120.png]]
+![[Pasted image 20251004155456.png]]
+خوب توضیحات بیشترش رو باید بخونیم :
+
+![[Pasted image 20251004154852.png]]
+![[Pasted image 20251004154902.png]]
+خوب اینجا گفته که چرا داریم از این constructor اینطوری استفاده میکنیم ؟
+برای این که اگر نخوایم ازش استفاده کنیم مثل نمونه کد اولی به ازای هر چیزی که توی لیست باشه باید بریم یه بار object عه traveler check list رو بیاریم و بهش add item کنیم ولی توی حالت دوم اینطوری نیست و تمام لیست رو یکجا واردش میکنیم 
