@@ -31,7 +31,7 @@
 
 ![[Pasted image 20250508185432.png]]
 
-حالا میایم کنار این پروژه blazor web assembly رو هم میزاریم :
+حالا میایم کنار این پروژه -blazor web assembly رو هم میزاریم :
 
 ![[Pasted image 20250508185515.png]]
 
