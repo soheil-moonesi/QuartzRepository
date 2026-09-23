@@ -89,6 +89,14 @@
 
 ![[Pasted image 20241219085417.png]]
 
+```sql
+select au_fname as 'نام',au_lname as 'نام خانوادگی' from authors
+```
+
+
+![[Pasted image 20260923142723.png]]
+
+
 یه فاصله هم بندازیم کار میکنه 
 
 ![[Pasted image 20241219085445.png]]
@@ -204,27 +212,83 @@
 
 اگر بخوایم کتاب هایی که قیمتشون بیشتر از 20 هستش رو پیدا کنیم 
 
+```sql
+select * from titles where price > 20
+```
+
 ![[Pasted image 20241219102155.png]]
 
 برای کامنت کردن از -- استفاده میکنیم، یا با /* میتونیم چند خط رو کامنت کنیم  
+
 ![[Pasted image 20241219102301.png]]
 
 ![[Pasted image 20241219102402.png]]
 
 مخالف <>
 مخالف =!
+
 ![[Pasted image 20241219102624.png]]
+
+
+```sql
+select * from titles where price >= 19.99
+
+```
+![[Pasted image 20260923144844.png]]
+
+```sql
+select * from titles where price between 19 and 22 
+
+```
+
+![[Pasted image 20260923144915.png]]
+
+```sql
+select * from titles where price >= 19 and price <= 22 
+
+```
+
+![[Pasted image 20260923144946.png]]
+
+
+```sql
+SELECT * FROM titles WHERE price >= 19 AND type= 'business';
+
+```
+
+![[Pasted image 20260923145019.png]]
 
 اگر از جنس string باشه باید از تک کوتیشن استفاده کنیم 
 
+```sql
+SELECT * FROM titles WHERE  type <> 'business' and type <> 'mode_cook'
+```
+
+```sql
+select * from titles where type not in ('business','mod_coook')
+
+```
+
+
 ![[Pasted image 20241219103748.png]]
 
-نکته همون طورکه در عکس پایین میبنید بعضی از قیمت ها null هستش ، ما برای این که به این ها دسترسی پیدا کنیم ، نمیتونیم اینطوری بنویسیم:
+نکته همون طورکه در عکس پایین میبنید بعضی از قیمت ها null هستش ، ما برای این که به این ها دسترسی پیدا کنیم ، نمیتونیم اینطوری بنویسیم:w
 
 ![[{F3AF21EE-53FC-4630-AA92-487A92B75CF4}.png]]
 
 برای چک کردن null بودن نمیتونیم اینطوری بنویسیم:
+```sql
+select * from titles where price is null
+```
+
+```sql
+select * from titles where price =null
+
+```
+
 ![[{2C80FC0E-FD42-4E73-901C-C4A74751C450}.png]]
+
+![[Pasted image 20260923154107.png]]
 
 باید از is استفاده کنیم 
 
@@ -232,15 +296,39 @@
 
 برای این که خلافش رو هم چک کنیم اینطوری ازش استفاده میکنیم :
 
+```sql
+select * from titles where price is not null
+
+```
+
 ![[Pasted image 20241219102938.png]]
 
+
 ![[Pasted image 20241219102950.png]]
+
+
+![[Pasted image 20260923154158.png]]
 
 --------------
 وقتی که بخوایم از OR استفاده کنیم 
 نکته ای که اینجا داریم اینه که میتونیم به جای کوئری اولی از دومی استفاده کنیم در دومی ما اومدیم و از in استفاده کردیم و با , اومدیم اسم تایپ هایی که میخوایم رو اضافه کردیم.
 
+```sql
+SELECT * FROM titles WHERE  type ='business' or type = 'mode_cook'
+```
+
+```sql
+select * from titles where type in ('business','mod_coook')
+```
+
+
+
+
 ![[Pasted image 20241219103630.png]]
+
+![[Pasted image 20260923161559.png]]
+
+نمیدونم این عکس پایین برای چه کدی است ؟
 
 ![[{F994B3C6-1653-4FAD-8400-CE29C6A61A9D}.png]]
 
