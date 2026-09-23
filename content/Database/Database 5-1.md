@@ -105,53 +105,177 @@
 
 
 
-
+#aggrigate_function
 
 
 ![[Pasted image 20241226091026.png]]
 
 ![[Pasted image 20241226091137.png]]
 
-اولی : وقتی که میخواد بشمره کل رکورد رو میاره توی رم و بعد میشماره  
+```sql
+select count(*) from titles
+select count(title_id) from titles
+
+```
+
+
+اولی :   وقتی که میخواد بشمره کل رکورد رو میاره توی رم و بعد میشماره  
 دومی : فقط میره  title id رو میاره و میشمره 
 دومی سرعتش خیلی بیشتره 
 
 نکته :null در توابع aggrigate تاثیر داده نمیشود 
 بهترین حالت برای شمارش اعضای جدول اینه که روی primery key ها بزنیم چون هیچوقت null نمیشن 
 
- ![[Pasted image 20241226091427.png]]
 
-چون وقتی که میخوایم ازش به صورت Nested استفاده کنیم وقتی که no cloumn name باشه نمیتونیم توی حالت nested ازش استفاده کنیم 
+چون وقتی که میخوایم ازش به صورت Nested استفاده کنیم وقتی که no cloumn name باشه نمیتونیم توی حالت nested ازش استفاده کنیم    ---->؟؟؟؟
 
 ![[Pasted image 20241226091435.png]]
 
 ![[Pasted image 20241226091545.png]]
 
+
+
+```sql
+select sum(price) tp from titles
+
+```
+![[Pasted image 20260920162733.png]]
+
+```sql
+select max(price) tp from titles
+
+```
+
+
+![[Pasted image 20260920162837.png]]
+
+```sql
+select min(price) tp from titles
+
+```
+
+![[Pasted image 20260920162922.png]]
+
+```sql
+select avg(price) tp from titles
+
+```
+![[Pasted image 20260920163017.png]]
+
+
 وقتی که SUM داره میگیره NULL ها رو تاثیر نمیده
+اینجا چند تا از قیمت ها null هستش و اون ها رو حساب نکرده 
+
+![[Pasted image 20260920163128.png]]
+
+از اینجا افتضاح نوشتم اصلا معلوم نیست 
+
+
 
 ![[Pasted image 20241226093738.png]]
+
+اینجا وقتی که میخوایم فقط یدونه از هر تایپی رو بیاریم ببینیم که از چه تایپیه اینطوری از distinct استفاده میکنیم 
+```sql
+select Distinct type from titles 
+```
+
+![[Pasted image 20260920164400.png]]
+
+خوب حالا اگر بخوایم دوتایی distinc بگیریم این شکلی میشه 
+
+روی این دیتا 
+
+![[Pasted image 20260920164933.png]]
+
+میخوایم ببینیم که city و state ها رو کلشون رو ببینیم - بدون موارد تکراری
+
+```sql
+SELECT DISTINCT city, state FROM authors
+```
+
+![[Pasted image 20260920165127.png]]
+
+---
+
+
+خوب اینجا 
+```sql
+
+SELECT city
+FROM publishers
+GROUP BY city;
+```
+![[Pasted image 20260920170158.png]]
+
+هر دوتایی این ها داره یک دیتا رو به ما برمیگردونه - ولی وقتی که ما میخوایم از توابع aggrigate استفاده کنیم میایم از group by استفاده میکنیم
+
 
 
 ![[Pasted image 20241226094753.png]]
 
 
+```sql
+select count(distinct au_id) from titleauthor
+```
+
+
+![[Pasted image 20260922155815.png]]
+
 ![[Pasted image 20241226095035.png]]
+
+![[Pasted image 20260922155410.png]]
 
 ترتیب بر اساس استاندارد Sql 
 
 
-
 ![[Pasted image 20241226095503.png]]
 
+خوب میخوایم 
 
+
+![[Pasted image 20260922160445.png]]
+هر کتاب چند بار سفارش داده شده 
+```sql
+select title_id,count(qty)
+from sales group by title_id
+
+```
 
 ![[Pasted image 20241226100546.png]]
 
-![[Pasted image 20241226100604.png]]
+هر کدوم از کتاب ها رو چند تا ازش فروختیم 
+
+```sql
+select title_id,sum(qty)
+from sales group by title_id
+```
 
 ![[Pasted image 20241226100656.png]]
 
+خوب میخوایم ببینیم اسم این کتاب هایی که فروختیتیم چی هستن ؟
 
+![[Pasted image 20260922161609.png]]
+
+```Sql
+select * from titles t inner join sales s on t.title_id=s.title_id
+```
+
+![[Pasted image 20260922162025.png]]
+
+```
+select t.title,sum(s.qty) from titles t
+inner join sales s on t.title_id=s.title_id
+group by t.title
+```
+
+![[Pasted image 20260922162157.png]]
+
+```sql
+select t.title,sum(s.qty) totalprice from titles t
+inner join sales s on t.title_id=s.title_id
+group by t.title
+
+```
 
 
 ![[Pasted image 20241226105349.png]]
@@ -159,26 +283,95 @@
 
 ![[Pasted image 20241226105525.png]]
 
+این بخش پایین اومده از left join استفاده کرده به این معنی که دیتاهایی که سمت چپ هستند رو مبنا قرار بده ، اگر به ازاش در جدول دوم یا همون راستی ، رکوردی وجود ندارد ، مثل اینجا که داره null رو نشون میده 
+
+```sql
+select t.title,sum(s.qty) totalprice from titles t
+left join sales s on t.title_id=s.title_id
+group by t.title
+```
+
+
 ![[Pasted image 20241226110059.png]]
 
 
+```sql
+select t.title,sum(t.price*s.qty) totalprice from titles t
+left join sales s on t.title_id=s.title_id
+group by t.title
 
+
+```
 
 ![[Pasted image 20241226111600.png]]
 
 
 سرعت left , Right بیشتر است چون inner هر دو طرفه چک میکنه ولی left , right یک 
 
+طرف رو چک میکنن -- خوب میایم با استفاده از isnull اون دیتاهایی که null هستش رو یه مقداری بهشون میدیم 
 
+میخوایم ببینیم که کل publisher ها چقدر فروختن  ؟
 
-طرف رو چک میکنن
+![[Pasted image 20260922163644.png]]
+
+```sql
+select * from publishers p left join titles t on p.pub_id=t.pub_id 
+left join sales s on t.title_id= s.title_id
+```
+
+![[Pasted image 20260922164130.png]]
+
+```sql
+select p.pub_name,sum(t.price*s.qty) from publishers p left join titles t on p.pub_id=t.pub_id 
+left join sales s on t.title_id= s.title_id group by p.pub_name
+```
+
+![[Pasted image 20260922171007.png]]
+
+```sql
+select p.pub_name,isnull(sum(t.price*s.qty),0)
+from publishers p left join titles t on p.pub_id=t.pub_id 
+left join sales s on t.title_id= s.title_id group by p.pub_name
+```
 
 ![[Pasted image 20241226113610.png]]
 
+میخوایم لیست فامیلی تمامی نویسندگان با تعداد کتاب هاشون رو به دست بیاریم 
+
+```sql
+select a.au_lname,count(title_id) from authors a 
+inner join titleauthor ta 
+on a.au_id = ta.au_id 
+group by a.au_lname
+
+```
+
+
 ![[Pasted image 20241226115355.png]]
+
+خوب اینجا ما دو تا نویسنده داریم که فامیلیشون یکسان هستش و برای همین ما برای این بیایم جداشون کنیم میایم group میزنیم روی اسم و فامیل 
+
+```SQL
+select a.au_lname,count(title_id) from authors a 
+inner join titleauthor ta 
+on a.au_id = ta.au_id 
+group by a.au_lname,a.au_fname
+```
+
+
+
 
 ![[Pasted image 20241226115511.png]]
 
+```sql
+select a.au_fname, a.au_lname,count(title_id) from authors a 
+inner join titleauthor ta 
+on a.au_id = ta.au_id 
+group by a.au_lname,a.au_fname
+
+```
+
+![[Pasted image 20260923140646.png]]
 
 
 

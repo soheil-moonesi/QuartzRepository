@@ -227,10 +227,60 @@
 
 
 یه دونه from داریم توی هر select 
+
+#Select
+
 ![[Pasted image 20241212130356.png]]
+
+```sql
+select * from authors
+
+```
+وقتی که اون فیلد هایی که فقط میخوایم رو مینویسیم :
+
+```sql
+select title_id,title,pub_id from titles 
+```
+
 
 از اینجا به بعد همیش optinal باشه 
  یدونه from میتونیم بینهایت join داشته باشیم 
+
+
+-خوب برای join  زدن اینطوری مینویسیم :
+```sql
+select * from titles 
+select * from publishers
+select * from titles t join publishers p on t.pub_id = p.pub_id
+```
+![[Pasted image 20260920121928.png]]
+اینجا میاد دو تا table رو با هم join میزنه و کنار هم قرار میده 
+-نکته اش اینه که یکم با اون عکس اون پایین متفاوت هستش و از on اومدیم استفاده کردیم 
+-خوب حالا برای استفاده از where میایم اینطوری ازش اسفتاده میکنیم :
+
+```sql
+select * from titles t join publishers p on t.pub_id = p.pub_id where p.city='Berkeley'
+```
+
+![[Pasted image 20260920122223.png]]
+
+-خوب وقتی که فقط فیلد هایی که میخوایم رو نشون بده اینطوری مینویسیم :
+```sql
+select t.title,p.city from titles t join publishers p on t.pub_id = p.pub_id where p.city='Berkeley'
+```
+
+-خوب حالا میخوایم دو تا join بزنیم :
+
+![[Pasted image 20260920123822.png]]
+
+```sql
+select t.title,t.price,s.ord_num,s.qty,p.city from titles t join publishers p on t.pub_id = p.pub_id join sales s on t.title_id=s.title_id where p.city='Berkeley'
+```
+
+
+
+![[Pasted image 20260920123733.png]]
+
 فیلتر در قسمت where condition هندل میشه مثلا فیلتر کردن بر اساس جنسیت ، سن و...
 قسمت group by  رو داریم مثلا جدول واریزی داریم که کد ملی و واریزی داریم 
 
