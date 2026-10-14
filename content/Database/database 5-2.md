@@ -334,6 +334,9 @@ select * from titles where type in ('business','mod_coook')
 
 وقتی که بخوایم از دو تا شرط رو or کنیم و کلش رو با یه شرط دیگه AND کنیم 
 
+```sql
+select * from titles where (price=19.99 or type ='business') and royalty =10
+```
 
 ![[Pasted image 20241219103136.png]]
 
@@ -341,13 +344,27 @@ select * from titles where type in ('business','mod_coook')
 
 اینجا همونطور که میدونید دیتایی که هر کدوم از این ها برمیگردونن متفاوت هستش 
 
+```sql
+select * from titles where price=19.99 or (type ='business' and royalty =10)
+```
+
+
 ![[{BB6C9F14-1247-4A9E-8FAA-C701EF8ABD4B}.png]]
 
 برای این که بخوایم یه مورد خاص رو پیدا کنیم هم میتونیم با = و هم میتونیم با like این کار کنیم که البته like کاربرد هایی دیگه ای هم توی سرچ کردن داره 
 
 نکته ی خیلی مهم اینه که وقتی که برای like درصد نزاریم مثل =  عمل میکنه ولی خیلی کند تره و در دستورات و کوئرها تا جای ممکن از نوشتن like باید پرهیز کنیم 
 
+```sql
+select * from titles where title = 'the Gourmet Microwave'
+
+```
+
 ![[Pasted image 20241219104036.png]]
+
+```sql
+select * from titles where title like 'the Gourmet Microwave'
+```
 
 ![[Pasted image 20241219104131.png]]
 
@@ -355,9 +372,20 @@ select * from titles where type in ('business','mod_coook')
 
 این یعنی همه کتاب هایی که قسمت انتهاییشون the هستش رو برو بیار 
 
+```sql
+select * from titles where title like '%The'
+
+```
+
 ![[Pasted image 20241219104150.png]]
+دیتایی نداریم
 
 این یعنی کتابهایی رو بیار که با the شروع میشن 
+
+```sql
+select * from titles where title like 'The%'
+
+```
 
 ![[Pasted image 20241219104212.png]]
 
@@ -365,25 +393,46 @@ select * from titles where type in ('business','mod_coook')
 
 این یعنی این که هر جای چه اول چه آخر چه وسط بود هر جاییش که the بود اون رو بیار
 
+```sql
+select * from titles where title like '%The%'
+```
+
 ![[Pasted image 20241219104246.png]]
 
 ![[{3134B44E-93EC-4304-A122-67D6175D188F}.png]]
 
 یه سری قابلیت های دیگه هم داره ،  مثل این که اینجا _ به معنی اینه که هر چی بود ، بود و حرف دومش e باشه و بعدش هم هر چی بود ، بود و میگه که این دیتاهارو بردار بیار 
 
+```sql
+select * from titles where title like '_e%'
+```
 ![[Pasted image 20241219104406.png]]
 
 ![[{1542E7BF-3AAB-4F8D-9150-0257339ED4FD}.png]]
+```sql
+select * from titles where title like '__e%'
+
+```
 
 ![[Pasted image 20241219104437.png]]
+
 ![[{394E5024-B76B-42F9-BD3E-E412EB705BAE}.png]]
 
 این به معنی این هستش که اولین حرف یا m باشه یا n باشه و یا o باشه و حرف بعدیش e باشه 
 
+```sql
+select * from titles where title like '[mno]e%'
+```
+
 ![[Pasted image 20241219104505.png]]
+
 ![[{5329963F-B197-49A7-A65B-B7178580A5CC}.png]]
 
 حالا اگر بخوایم مخالفش رو پیدا کنیم ، یعنی حرف اولش m n o نباشه و حرف بعدیش e باشه 
+
+```sql
+select * from titles where title like '[^mno]e%'
+```
 
 ![[Pasted image 20241219104540.png]]
 
@@ -391,10 +440,17 @@ select * from titles where type in ('business','mod_coook')
 
 به صورت بازه حرفی هم میتونیم براش تعیین کنیم ، اینجا یعنی از حرف a تا o 
 
+```sql
+select * from titles where title like '[a-o]e%'
+```
+
 ![[Pasted image 20241219105100.png]]
 
 حالا اگر بخوایم دیتا ها رو مرتب کنیم از order by  استفاده میکنیم 
 
+```sql
+select * from authors order by au_lname,au_fname
+```
 ![[Pasted image 20241219105208.png]]
 
 خوب اینجا نکته ای که هستش اینه که اول میاد دیتا ها رو بر اساس au_lname میاد sort میکنه و بعد میاد در حالت هایی که مساوی شدن میاد sort شدن رو روی au_fname پیاده میکنه 
@@ -408,13 +464,22 @@ select * from titles where type in ('business','mod_coook')
 اینجا چون هر دو تا اسم یکسان هستند و بعدیش اومده توی فامیلی ها و sort رو بر اساس حروف الفبا تعیین کرده ، در اینجا ab بالاتر از an قرار میگیره 
 
 میتونیم ترتیب صعودی و نزولیش رو هم تعیین کنیم 
+
+```sql
+select * from authors order by au_lname,au_fname desc
+```
 ![[Pasted image 20241219105236.png]]
 
 میتونیم برای هر کدوم رو هم به صورت جداگانه صعودی و نزولیش رو تعیین کنیم 
 
+```sql
+select * from authors order by au_lname asc,au_fname desc
+```
+
 ![[Pasted image 20241219105419.png]]
 
 شروع join
+
 
 ![[{783FC15C-C6C4-4CFD-902D-05B11E85D7D9}.png]]
 https://stevestedman.com/
@@ -459,6 +524,8 @@ https://blog.bytebytego.com/p/ep90-how-do-sql-joins-work
 
 ![[{51ACE86B-DA2B-44EC-843F-8A376B1E1AC6}.png]]
 
+در ضرب دکارتی اطلاعات جدول اول ضرب در اطلاعات جدول دوم میشه - یعنی رکورد جدول اول با تمام رکوردهای جدول دوم قرار میگیرد در یک table و رکورد های بعدی جدول اول هم به همین ترتیب
+
 ![[Pasted image 20241219114246.png]]
 
 ![[{E2B617F8-81AF-450B-AA1C-A633BB718F65}.png]]
@@ -470,9 +537,20 @@ https://blog.bytebytego.com/p/ep90-how-do-sql-joins-work
 https://www.scaler.com/topics/cartesian-join-sql/
 
 کوئری که نام کتاب و نام ناشر کتاب ها رو لیست کنه :
+
+```sql
+select * from titles t inner join publishers p on p.pub_id = t.pub_id
+```
+
 ![[{1E809D56-24AD-4875-82F5-05F95F466DCD}.png]]
+
+![[Pasted image 20260929162705.png]]
+
 بعد از این که اسم جدول ها رو به t و p تغییر دادیم میایم select مون رو تغییر میدیم 
 میایم از نام های alias استفاده میکنیم تا بعدا بدونیم که مثلا title از t اومده که t هم میشه alias جدول titles یا pub_name از p اومده که p میشه alias جدول publishers
+```sql
+select t.title,p.pub_name from titles t inner join publishers p on p.pub_id = t.pub_id
+```
 
 ![[Pasted image 20241219120648.png]]
 
@@ -483,12 +561,31 @@ https://www.scaler.com/topics/cartesian-join-sql/
 
 اگر right join بزنیم تمام ناشرها رو میاره حتی اون هایی که هیچ کتابری رو منتشر نکردن
 تعدادش 23 تاست 
+```sql
+select t.title,p.pub_name from titles t right join publishers p on p.pub_id = t.pub_id
+```
 
 ![[{190E37B2-699B-4493-BE14-3B77E1327E00}.png]]
+
+```sql
+select t.title,p.pub_name from titles t left join publishers p on p.pub_id = t.pub_id
+
+```
+
+![[Pasted image 20260929163123.png]]
+
+
 
 ![[Pasted image 20241219120848.png]]
 
 نتیجه ی full join 
+
+```sql
+select t.title,p.pub_name from titles t full join publishers p on p.pub_id = t.pub_id
+```
+
+![[Pasted image 20260929163233.png]]
+
 
 ![[{2D38F0F1-1FE9-4132-BBF6-AA4DE5AC4046}.png]]
  
@@ -503,6 +600,10 @@ https://www.scaler.com/topics/cartesian-join-sql/
 اینجا همونطور که میبینید اگر بیایم از where استفاده کنیم و بگیم که کتاب هایی که قیمتشون null رو بیار برای این که به هدفمون برسیم اشتباهه ، چون که درسته که تمامی فیلد ها برای ناشر هایی که کتاب منتشر نکردن ، در سمت چپ null هستش ولی اتفاقی که افتاده اینه که یه سری کتابی هم که چاپ شدن قیمتشون null هستش 
 
 برای این بخوایم وجود یا عدم جود چیزی رو در جدوال چک کنیم باید از PK استفاده کنیم، که در اینجا میشه title_id 
+
+```sql
+select * from titles t full join publishers p on p.pub_id = t.pub_id where price is null
+```
 
 ![[{3A9C90EE-2E31-42A6-9CC7-9FDBAB39FEC1}.png]]
 
