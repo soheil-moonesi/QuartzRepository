@@ -1,3 +1,4 @@
+Persian Immutable Objects in C Part1 YT
 https://www.youtube.com/watch?v=HOJsD5FnJh8&list=PLN5rV4x2x5Xef7lcvrhdDBnJKVfVEw6ui&index=8
 
 ![[Pasted image 20261107165517.png]]
@@ -271,4 +272,21 @@ http://youtube.com/watch?v=TfoSyRyEVdo
 خوب به این داستانی که threed منتظر نمونه و بره توی threed poll میگن async 
 
 ![[Pasted image 20261108151103.png]]
+
+
+
+https://www.youtube.com/watch?v=LNqz15rhyWU&list=PLN5rV4x2x5Xef7lcvrhdDBnJKVfVEw6ui&index=13
+
+
+![[Pasted image 20261109155738.png]]
+
+
+
+توی مثال قبلی 
+
+![[Pasted image 20261109155849.png]]
+
+اینجا main و worker دو تا متد جداگانه رو داشتن اجرا میکردن - ولی الان میخواین یه متد رو اجرا کنن 
+
+1:49
 
