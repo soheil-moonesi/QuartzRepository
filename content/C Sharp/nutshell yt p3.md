@@ -462,9 +462,159 @@ https://www.youtube.com/watch?v=y_xZy2i0H6o&list=PLN5rV4x2x5Xef7lcvrhdDBnJKVfVEw
 
 خوب حالا اون متد هایی که static هستند رو از خوده کلاس باید بهشون برسیم و ازشون استفاده کنیم برای همین بهش میگن class method 
 
-2:06
+وقتی که از class میایم instance میگیریم refre میاد در stack ذخیره میشه و دیتای اصلی میره توی heap 
+
+![[Pasted image 20261116095731.png]]
 
 
+![[Pasted image 20261116095819.png]]
 
+خوب توی heap یه جایی رو داریم به اسم HFH میایم Static ها رو اونجا ذخیره میکنیم
+
+![[Pasted image 20261116095947.png]]
+
+خوب وقتی که instance میسازیم میره یه جای دیگه رو توی heap بهش اختصاص میده 
+
+![[Pasted image 20261116100101.png]]
+
+
+خوب وقتی که بخوایم اطلاعاتی رو بین تمامی instance ها و یا بین تمام thread های برنامه Share اش کنیم میایم از Static استفاده میکنیم 
+
+![[Pasted image 20261116100416.png]]
+
+https://www.youtube.com/watch?v=rkL10_bBg6Y&list=PLN5rV4x2x5Xef7lcvrhdDBnJKVfVEw6ui&index=23
+
+![[Pasted image 20261116100821.png]]
+
+خوب اینجا اگر قانون عوض بشه برای حقوق کارمند ما باید بیایم همون جا تغییر بدیم 
+
+![[Pasted image 20261116101047.png]]
+خوب برای این که بهترش کنیم میایم جداش میکنیم - محاسبه حقوق رو از salery 
+
+![[Pasted image 20261116101154.png]]
+
+خوب حالا ما یه جا این محاسبه حقوق رو تعییر میدیم و همه جا تغییر میکنه 
+
+![[Pasted image 20261116101223.png]]
+
+خوب حالا hr گفت با یه فرمول دیگه میخواد محاسبه بکنه - ما باید بیام و ورودی تابع رو تغییر بدیم 
+
+خوب برای همین قضیه میایم یه متد به صورت plug in میزاریم و به salery میگیم که اون رو call کن 
+
+برای این که مثلا اگر یه فرمول اضافه بشه نخوایم هی else if بزاریم 
+
+![[Pasted image 20261116102540.png]]
+
+خوب ما اینجا میخوایم plug in اش کنیم 
+
+![[Pasted image 20261116102922.png]]
+
+
+![[Pasted image 20261116103819.png]]
+
+خوب instance ها و obj ها و delegate ها میدوندد که چجوری متد ها رو call بکنن 
+
+![[Pasted image 20261116103915.png]]
+
+خوب حالا مال پشت این Delegate میتونیم متد هایی رو ارسال کنیم خروجی int باشه و ورودش int باشه 
+
+![[Pasted image 20261116103956.png]]
+
+دیگه دققه ی if و condition رو نداریم 
+![[Pasted image 20261116104334.png]]
+
+خوب حالا میخوایم hr رو محاسبه کنیم - دیگه نیمخواد بریم condition اضافه کنیم 
+
+![[Pasted image 20261116104423.png]]
+
+
+https://www.youtube.com/watch?v=B42CSczVmK4&list=PLN5rV4x2x5Xef7lcvrhdDBnJKVfVEw6ui&index=24
+
+خوب قبلا اینطوری مینوشتن 
+
+![[Pasted image 20261116105315.png]]
+
+ولی الان invoke رو هم نزاریم اوکیه 
+
+![[Pasted image 20261116105627.png]]
+
+دیگه ما اینجا دققه ی این رو نداریم که یه رفتار جدید یا یه شرط جدید ایجاد بشه 
+
+ایا delegate ها میتونن به صورت genetic باشن ؟
+
+![[Pasted image 20261116105826.png]]
  
+مثل عکس بالاا میتونیم generic اش کنیم و ورودی و خروجیش یکسان هستش 
+
+
+خوب اینجا مشکلی که پیش میاد - اینه که ورودیمون یه چیزی باشه خروجیمون یه چیز دیگه 
+
+![[Pasted image 20261116110202.png]]
+
+
+![[Pasted image 20261116110709.png]]
+
+
+![[Pasted image 20261116110755.png]]
+
+![[Pasted image 20261116110824.png]]
+
+تا 16 تا overload رو پیاده سازی کردن - یعنی 16 تا ورودی و اخرینش میشه خروجی 
+
+![[Pasted image 20261116110920.png]]
+
+خوب دیگه ما نیازی نداریم از اون بخش کامنت شده استفاده کنیم و از همین امکانات .net استفاده میکنیم 
+
+خوب func نوعی از delegate generic هستش که حتما خروجی داره 
+
+خوب حالا Action جیع ؟ این فرقش با بالایی اینه که دیگه خروجی نداره و خروجیش void هستش 
+
+![[Pasted image 20261116111111.png]]
+
+
+https://www.youtube.com/watch?v=lt0-w6vxk5Q&list=PLN5rV4x2x5Xef7lcvrhdDBnJKVfVEw6ui&index=25
+
+خوب delegate ها ابجکت هایی هستن که میدودنن که چطوری باید متد ها رو call کنن 
+
+![[Pasted image 20261116112400.png]]
+
+
+![[Pasted image 20261116112541.png]]
+
+
+خوب با استفاده از delegate ها میتونیم multi cast کنیم 
+
+![[Pasted image 20261116112710.png]]
+
+![[Pasted image 20261116113942.png]]
+
+اگر خروجی void باشه این کار رو میکنیم 
+
+![[Pasted image 20261116114028.png]]
+
+
+
+خوب حتی میتونیم action رو هم ننویسیسم و فقط var بنویسیم 
+
+![[Pasted image 20261116114151.png]]
+
+بر اساس این که ما داریم singiture متد رو بهش میدیم خودش action در نظرش میگیره در کامپایلر
+
+https://www.youtube.com/watch?v=4-QazqN36TY&list=PLN5rV4x2x5Xef7lcvrhdDBnJKVfVEw6ui&index=26
+
+![[Pasted image 20261116115033.png]]
+
+خوب حالا میخوایم ببینیم که کجا ها باید interface ها استفاده کرد 
+
+![[Pasted image 20261116115210.png]]
+
+
+![[Pasted image 20261116115249.png]]
+
+خوب 3 تا حالت هستش که بخوایم از delegate استفاده کنیم یا از interface 
+
+زمانی که multicast داریم نمیتوانیم از interface ها استفاده کنیم 
+به ازای هر رفتار و فرمول داریم کلاس های متفاوت درست میکنیم - یعنی رفتار یکی ولی متفاوت پیاده سازی شده است - در این صورت نیازی نیست از interface استفاده بشه 
+
+https://www.youtube.com/watch?v=uf691MK762Q&list=PLN5rV4x2x5Xef7lcvrhdDBnJKVfVEw6ui&index=27
 
